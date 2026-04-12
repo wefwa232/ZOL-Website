@@ -24,6 +24,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -46,10 +47,10 @@
         }
     </script>
 </head>
-<body class="font-body bg-brand-cream text-brand-charcoal antialiased overflow-x-hidden">
+<body class="font-body bg-brand-cream dark:bg-gray-900 text-brand-charcoal dark:text-white antialiased overflow-x-hidden transition-colors duration-300">
 
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-cream flex items-center justify-center">
+    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-cream dark:bg-gray-900 flex items-center justify-center">
         <div class="text-center">
             <div class="text-6xl font-heading font-extrabold text-brand-yellow mb-4 preloader-logo">ZOL</div>
             <div class="w-48 h-1 bg-brand-gray/20 rounded-full overflow-hidden mx-auto">
@@ -64,35 +65,39 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 -translate-y-full">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#hero" class="font-heading font-bold text-2xl text-brand-charcoal nav-logo">ZOL</a>
+            <a href="#hero" class="font-heading font-bold text-2xl text-brand-charcoal dark:text-white nav-logo">ZOL</a>
             <div class="hidden lg:flex items-center gap-6">
-                <a href="#about" class="font-body text-brand-charcoal font-medium nav-link text-sm">Über Uns</a>
-                <a href="#team" class="font-body text-brand-charcoal font-medium nav-link text-sm">Team</a>
-                <a href="#activities" class="font-body text-brand-charcoal font-medium nav-link text-sm">Aktivitäten</a>
-                <a href="#gallery" class="font-body text-brand-charcoal font-medium nav-link text-sm">Galerie</a>
-                <a href="#schedule" class="font-body text-brand-charcoal font-medium nav-link text-sm">Termine</a>
-                <a href="#faq" class="font-body text-brand-charcoal font-medium nav-link text-sm">FAQ</a>
+                <a href="#about" class="font-body text-brand-charcoal dark:text-white/80 font-medium nav-link text-sm hover:text-brand-yellow">Über Uns</a>
+                <a href="#team" class="font-body text-brand-charcoal dark:text-white/80 font-medium nav-link text-sm hover:text-brand-yellow">Team</a>
+                <a href="#activities" class="font-body text-brand-charcoal dark:text-white/80 font-medium nav-link text-sm hover:text-brand-yellow">Aktivitäten</a>
+                <a href="#gallery" class="font-body text-brand-charcoal dark:text-white/80 font-medium nav-link text-sm hover:text-brand-yellow">Galerie</a>
+                <a href="#schedule" class="font-body text-brand-charcoal dark:text-white/80 font-medium nav-link text-sm hover:text-brand-yellow">Termine</a>
+                <a href="#faq" class="font-body text-brand-charcoal dark:text-white/80 font-medium nav-link text-sm hover:text-brand-yellow">FAQ</a>
                 <a href="#contact" class="btn-primary text-sm px-6 py-2 magnetic-btn">Kontakt</a>
+                <button id="theme-toggle" class="ml-2 p-2 rounded-full hover:bg-brand-yellow/10 dark:hover:bg-white/10 transition-colors" aria-label="Theme wechseln">
+                    <svg class="w-5 h-5 theme-icon-sun text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-5 h-5 theme-icon-moon text-brand-yellow hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
             </div>
             <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-brand-yellow/10 transition-colors" aria-label="Menü öffnen" aria-expanded="false">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg rounded-b-2xl mx-4 overflow-hidden">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-gray-800 shadow-lg rounded-b-2xl mx-4 overflow-hidden">
             <div class="flex flex-col p-6 gap-4">
-                <a href="#about" class="font-body text-brand-charcoal font-medium text-lg">Über Uns</a>
-                <a href="#team" class="font-body text-brand-charcoal font-medium text-lg">Team</a>
-                <a href="#activities" class="font-body text-brand-charcoal font-medium text-lg">Aktivitäten</a>
-                <a href="#gallery" class="font-body text-brand-charcoal font-medium text-lg">Galerie</a>
-                <a href="#schedule" class="font-body text-brand-charcoal font-medium text-lg">Termine</a>
-                <a href="#faq" class="font-body text-brand-charcoal font-medium text-lg">FAQ</a>
+                <a href="#about" class="font-body text-brand-charcoal dark:text-white font-medium text-lg">Über Uns</a>
+                <a href="#team" class="font-body text-brand-charcoal dark:text-white font-medium text-lg">Team</a>
+                <a href="#activities" class="font-body text-brand-charcoal dark:text-white font-medium text-lg">Aktivitäten</a>
+                <a href="#gallery" class="font-body text-brand-charcoal dark:text-white font-medium text-lg">Galerie</a>
+                <a href="#schedule" class="font-body text-brand-charcoal dark:text-white font-medium text-lg">Termine</a>
+                <a href="#faq" class="font-body text-brand-charcoal dark:text-white font-medium text-lg">FAQ</a>
                 <a href="#contact" class="btn-primary text-center text-sm px-6 py-2">Kontakt</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-brand-cream via-amber-50 to-brand-cream">
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-brand-cream via-amber-50 to-brand-cream dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div id="hero-particles" class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
             <svg class="particle absolute w-12 h-12 text-brand-yellow/30" style="top:20%;left:10%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="particle absolute w-16 h-16 text-brand-green/20" style="top:30%;right:15%" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4H3a1 1 0 00-1 1v14a1 1 0 001 1h18a1 1 0 001-1V5a1 1 0 00-1-1zM4 18V6h7v12H4zm9 0V6h7v12h-7z"/></svg>
@@ -104,10 +109,10 @@
 
         <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
             <p class="text-brand-green font-heading font-semibold text-lg md:text-xl mb-4 tracking-wide hero-subtitle">Zukunft Orientiertes Lernen</p>
-            <h1 class="font-heading font-extrabold text-5xl md:text-6xl lg:text-7xl text-brand-charcoal mb-6 leading-tight">
+            <h1 class="font-heading font-extrabold text-5xl md:text-6xl lg:text-7xl text-brand-charcoal dark:text-white mb-6 leading-tight">
                 <span id="typed-headline"></span>
             </h1>
-            <p class="text-brand-gray text-xl md:text-2xl mb-10 max-w-2xl mx-auto hero-description">Interaktive Lese- und Lernprojekte an der Gaißau Volksschule — junge Köpfe inspirieren, eine Geschichte nach der anderen.</p>
+            <p class="text-brand-gray dark:text-gray-300 text-xl md:text-2xl mb-10 max-w-2xl mx-auto hero-description">Interaktive Lese- und Lernprojekte an der Gaißau Volksschule — junge Köpfe inspirieren, eine Geschichte nach der anderen.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center hero-buttons">
                 <a href="#about" class="btn-primary text-lg px-10 py-4 magnetic-btn">Unser Projekt</a>
                 <a href="#activities" class="btn-secondary text-lg px-10 py-4 magnetic-btn">Aktivitäten</a>
@@ -123,13 +128,13 @@
     <div class="wave-divider -mt-1"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#ffffff" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z"></path></svg></div>
 
     <!-- Stats Section -->
-    <section id="stats" class="py-16 bg-white relative">
+    <section id="stats" class="py-16 bg-white dark:bg-gray-800 relative">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-yellow counter" data-target="50">0</div><div class="text-brand-gray mt-2 font-medium">Kinder erreicht</div></div>
-                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-green counter" data-target="12">0</div><div class="text-brand-gray mt-2 font-medium">Besuche</div></div>
-                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-coral counter" data-target="3">0</div><div class="text-brand-gray mt-2 font-medium">Aktive Teams</div></div>
-                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-yellow counter" data-target="100">0</div><div class="text-brand-gray mt-2 font-medium">% Leidenschaft</div></div>
+                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-yellow counter" data-target="50">0</div><div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">Kinder erreicht</div></div>
+                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-green counter" data-target="12">0</div><div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">Besuche</div></div>
+                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-coral counter" data-target="3">0</div><div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">Aktive Teams</div></div>
+                <div class="text-center stat-item"><div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-yellow counter" data-target="100">0</div><div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">% Leidenschaft</div></div>
             </div>
         </div>
     </section>
@@ -138,13 +143,13 @@
     <div class="wave-divider -mt-1 rotate-180"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#ffffff" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z"></path></svg></div>
 
     <!-- About Section -->
-    <section id="about" class="section-padding bg-white relative overflow-hidden">
+    <section id="about" class="section-padding bg-white dark:bg-gray-800 relative overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Über ZOL</h2><p class="section-subtitle mx-auto">Zukunft Orientiertes Lernen — Lernen mit Zukunft</p></div>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="gs-reveal-left">
-                    <h3 class="font-heading text-2xl font-bold text-brand-charcoal mb-4">Junge Leser*innen an der Gaißau Volksschule inspirieren</h3>
-                    <div class="space-y-4 text-brand-gray text-lg leading-relaxed">
+                    <h3 class="font-heading text-2xl font-bold text-brand-charcoal dark:text-white mb-4">Junge Leser*innen an der Gaißau Volksschule inspirieren</h3>
+                    <div class="space-y-4 text-brand-gray dark:text-gray-300 text-lg leading-relaxed">
                         <p>ZOL ist eine von Schüler*innen initiierte Initiative, die sich der Leseförderung und dem interaktiven Lernen bei jungen Kindern widmet.</p>
                         <p>Durch Geschichtenerzählen, interaktive Lesesessions und kreative Aktivitäten helfen wir Kindern, die Freude am Lesen zu entdecken.</p>
                         <p>Unsere Mission: Lernen soll sich wie Spielen anfühlen und Lesen wie ein Abenteuer.</p>
@@ -154,8 +159,8 @@
                     <div class="bg-gradient-to-br from-brand-yellow/20 to-brand-green/20 rounded-xl aspect-[4/3] flex items-center justify-center">
                         <div class="text-center p-8">
                             <svg class="w-20 h-20 mx-auto text-brand-yellow/60 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            <p class="text-brand-gray font-medium">Gruppenfoto-Platzhalter</p>
-                            <p class="text-brand-gray text-sm">Durch echtes Foto ersetzen</p>
+                            <p class="text-brand-gray dark:text-gray-300 font-medium">Gruppenfoto-Platzhalter</p>
+                            <p class="text-brand-gray dark:text-gray-400 text-sm">Durch echtes Foto ersetzen</p>
                         </div>
                     </div>
                 </div>
@@ -167,13 +172,13 @@
     <div class="wave-divider -mt-1"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,32L60,37.3C120,43,240,53,360,58.7C480,64,600,64,720,58.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,120L0,120Z"></path></svg></div>
 
     <!-- Team Section -->
-    <section id="team" class="section-padding bg-brand-cream relative overflow-hidden">
+    <section id="team" class="section-padding bg-brand-cream dark:bg-gray-900 relative overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Unser Team</h2><p class="section-subtitle mx-auto">Lernt die engagierten Schüler*innen hinter ZOL kennen</p></div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="card tilt-card gs-reveal" data-gs-delay="0.1"><div class="bg-gradient-to-br from-amber-100 to-orange-50 aspect-square flex items-center justify-center"><svg class="w-24 h-24 text-brand-yellow/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div class="p-6 text-center"><h3 class="font-heading font-bold text-xl text-brand-charcoal">Teammitglied</h3><p class="text-brand-green font-medium">Projektleitung</p></div></div>
-                <div class="card tilt-card gs-reveal" data-gs-delay="0.2"><div class="bg-gradient-to-br from-emerald-100 to-green-50 aspect-square flex items-center justify-center"><svg class="w-24 h-24 text-brand-green/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div class="p-6 text-center"><h3 class="font-heading font-bold text-xl text-brand-charcoal">Teammitglied</h3><p class="text-brand-green font-medium">Lesekoordinator*in</p></div></div>
-                <div class="card tilt-card gs-reveal" data-gs-delay="0.3"><div class="bg-gradient-to-br from-coral-100 to-orange-50 aspect-square flex items-center justify-center"><svg class="w-24 h-24 text-brand-coral/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div class="p-6 text-center"><h3 class="font-heading font-bold text-xl text-brand-charcoal">Teammitglied</h3><p class="text-brand-green font-medium">Aktivitätsdesigner*in</p></div></div>
+                <div class="card tilt-card gs-reveal dark:bg-gray-800" data-gs-delay="0.1"><div class="bg-gradient-to-br from-amber-100 to-orange-50 dark:from-gray-700 dark:to-gray-600 aspect-square flex items-center justify-center"><svg class="w-24 h-24 text-brand-yellow/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div class="p-6 text-center"><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white">Teammitglied</h3><p class="text-brand-green font-medium">Projektleitung</p></div></div>
+                <div class="card tilt-card gs-reveal dark:bg-gray-800" data-gs-delay="0.2"><div class="bg-gradient-to-br from-emerald-100 to-green-50 dark:from-gray-700 dark:to-gray-600 aspect-square flex items-center justify-center"><svg class="w-24 h-24 text-brand-green/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div class="p-6 text-center"><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white">Teammitglied</h3><p class="text-brand-green font-medium">Lesekoordinator*in</p></div></div>
+                <div class="card tilt-card gs-reveal dark:bg-gray-800" data-gs-delay="0.3"><div class="bg-gradient-to-br from-coral-100 to-orange-50 dark:from-gray-700 dark:to-gray-600 aspect-square flex items-center justify-center"><svg class="w-24 h-24 text-brand-coral/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div class="p-6 text-center"><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white">Teammitglied</h3><p class="text-brand-green font-medium">Aktivitätsdesigner*in</p></div></div>
             </div>
         </div>
     </section>
@@ -182,14 +187,14 @@
     <div class="wave-divider -mt-1 rotate-180"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,32L60,37.3C120,43,240,53,360,58.7C480,64,600,64,720,58.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,120L0,120Z"></path></svg></div>
 
     <!-- Activities Section -->
-    <section id="activities" class="section-padding bg-white relative overflow-hidden">
+    <section id="activities" class="section-padding bg-white dark:bg-gray-800 relative overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Unsere Aktivitäten</h2><p class="section-subtitle mx-auto">Entdeckt die spannenden Lernerfahrungen, die wir schaffen</p></div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="card tilt-card overflow-hidden gs-reveal" data-gs-delay="0.1"><div class="bg-gradient-to-br from-yellow-50 to-amber-50 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-brand-yellow/50 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal mb-2">Interaktives Geschichtenerzählen</h3><p class="text-brand-gray">Bilderbücher werden mit Requisiten, Stimmen und Publikumsteilnahme zum Leben erweckt.</p></div></div>
-                <div class="card tilt-card overflow-hidden gs-reveal" data-gs-delay="0.2"><div class="bg-gradient-to-br from-green-50 to-emerald-50 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-brand-green/50 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal mb-2">Kreative Lesespiele</h3><p class="text-brand-gray">Worträtsel, Lese-Herausforderungen und Fantasie-Übungen für spielerisches Lernen.</p></div></div>
-                <div class="card tilt-card overflow-hidden gs-reveal" data-gs-delay="0.3"><div class="bg-gradient-to-br from-orange-50 to-amber-50 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-brand-coral/50 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal mb-2">Lese-Kreise</h3><p class="text-brand-gray">Kleine Gruppen lesen gemeinsam und besprechen Geschichten — Gemeinschaft aufbauen.</p></div></div>
-                <div class="card tilt-card overflow-hidden gs-reveal" data-gs-delay="0.4"><div class="bg-gradient-to-br from-purple-50 to-pink-50 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-purple-400 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal mb-2">Illustrations-Workshop</h3><p class="text-brand-gray">Kinder zeichnen eigene Illustrationen — Kunst und Lesen praktisch verbinden.</p></div></div>
+                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-700" data-gs-delay="0.1"><div class="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-600 dark:to-gray-700 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-brand-yellow/50 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">Interaktives Geschichtenerzählen</h3><p class="text-brand-gray dark:text-gray-300">Bilderbücher werden mit Requisiten, Stimmen und Publikumsteilnahme zum Leben erweckt.</p></div></div>
+                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-700" data-gs-delay="0.2"><div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-600 dark:to-gray-700 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-brand-green/50 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">Kreative Lesespiele</h3><p class="text-brand-gray dark:text-gray-300">Worträtsel, Lese-Herausforderungen und Fantasie-Übungen für spielerisches Lernen.</p></div></div>
+                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-700" data-gs-delay="0.3"><div class="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-600 dark:to-gray-700 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-brand-coral/50 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">Lese-Kreise</h3><p class="text-brand-gray dark:text-gray-300">Kleine Gruppen lesen gemeinsam und besprechen Geschichten — Gemeinschaft aufbauen.</p></div></div>
+                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-700" data-gs-delay="0.4"><div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-600 dark:to-gray-700 aspect-video flex items-center justify-center"><svg class="w-16 h-16 text-purple-400 zoom-img" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div><div class="p-6"><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">Illustrations-Workshop</h3><p class="text-brand-gray dark:text-gray-300">Kinder zeichnen eigene Illustrationen — Kunst und Lesen praktisch verbinden.</p></div></div>
             </div>
         </div>
     </section>
@@ -198,7 +203,7 @@
     <div class="wave-divider -mt-1"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,96L80,90.7C160,85,320,75,480,74.7C640,75,800,85,960,80C1120,75,1280,53,1360,42.7L1440,32L1440,120L0,120Z"></path></svg></div>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="section-padding bg-brand-cream relative overflow-hidden">
+    <section id="gallery" class="section-padding bg-brand-cream dark:bg-gray-900 relative overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Galerie</h2><p class="section-subtitle mx-auto">Einblicke in unsere Aktivitäten an der Gaißau Volksschule</p></div>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -216,14 +221,14 @@
     <div class="wave-divider -mt-1 rotate-180"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,96L80,90.7C160,85,320,75,480,74.7C640,75,800,85,960,80C1120,75,1280,53,1360,42.7L1440,32L1440,120L0,120Z"></path></svg></div>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="section-padding bg-white relative overflow-hidden">
+    <section id="testimonials" class="section-padding bg-white dark:bg-gray-800 relative overflow-hidden">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Stimmen</h2><p class="section-subtitle mx-auto">Was Lehrer*innen und Eltern über ZOL sagen</p></div>
             <div class="swiper testimonial-swiper gs-reveal">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><div class="card p-8 md:p-12 text-center"><svg class="w-10 h-10 text-brand-yellow/40 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/></svg><p class="text-brand-gray text-lg md:text-xl leading-relaxed mb-6 italic">"Die ZOL-Gruppe hat unsere Kinder wirklich begeistert. Zum ersten Mal hat mein Sohn freiwillig ein Buch mitgenommen!"</p><p class="font-heading font-bold text-brand-charcoal">— Eine begeisterte Mutter</p></div></div>
-                    <div class="swiper-slide"><div class="card p-8 md:p-12 text-center"><svg class="w-10 h-10 text-brand-green/40 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/></svg><p class="text-brand-gray text-lg md:text-xl leading-relaxed mb-6 italic">"Fantastisches Engagement! Die Energie der ZOL-Gruppe ist ansteckend. Unsere Kinder lieben die Besuche."</p><p class="font-heading font-bold text-brand-charcoal">— Lehrerin, Gaißau Volksschule</p></div></div>
-                    <div class="swiper-slide"><div class="card p-8 md:p-12 text-center"><svg class="w-10 h-10 text-brand-coral/40 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/></svg><p class="text-brand-gray text-lg md:text-xl leading-relaxed mb-6 italic">"Meine Tochter erzählt jeden Abend von den Geschichten. ZOL hat ihr Selbstvertrauen enorm gestärkt."</p><p class="font-heading font-bold text-brand-charcoal">— Ein stolzer Vater</p></div></div>
+                    <div class="swiper-slide"><div class="card p-8 md:p-12 text-center dark:bg-gray-700"><svg class="w-10 h-10 text-brand-yellow/40 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/></svg><p class="text-brand-gray dark:text-gray-300 text-lg md:text-xl leading-relaxed mb-6 italic">"Die ZOL-Gruppe hat unsere Kinder wirklich begeistert. Zum ersten Mal hat mein Sohn freiwillig ein Buch mitgenommen!"</p><p class="font-heading font-bold text-brand-charcoal dark:text-white">— Eine begeisterte Mutter</p></div></div>
+                    <div class="swiper-slide"><div class="card p-8 md:p-12 text-center dark:bg-gray-700"><svg class="w-10 h-10 text-brand-green/40 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/></svg><p class="text-brand-gray dark:text-gray-300 text-lg md:text-xl leading-relaxed mb-6 italic">"Fantastisches Engagement! Die Energie der ZOL-Gruppe ist ansteckend. Unsere Kinder lieben die Besuche."</p><p class="font-heading font-bold text-brand-charcoal dark:text-white">— Lehrerin, Gaißau Volksschule</p></div></div>
+                    <div class="swiper-slide"><div class="card p-8 md:p-12 text-center dark:bg-gray-700"><svg class="w-10 h-10 text-brand-coral/40 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/></svg><p class="text-brand-gray dark:text-gray-300 text-lg md:text-xl leading-relaxed mb-6 italic">"Meine Tochter erzählt jeden Abend von den Geschichten. ZOL hat ihr Selbstvertrauen enorm gestärkt."</p><p class="font-heading font-bold text-brand-charcoal dark:text-white">— Ein stolzer Vater</p></div></div>
                 </div>
                 <div class="swiper-pagination mt-8"></div>
             </div>
@@ -234,13 +239,13 @@
     <div class="wave-divider -mt-1"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,96L80,90.7C160,85,320,75,480,74.7C640,75,800,85,960,80C1120,75,1280,53,1360,42.7L1440,32L1440,120L0,120Z"></path></svg></div>
 
     <!-- Schedule Section -->
-    <section id="schedule" class="section-padding bg-brand-cream relative overflow-hidden">
+    <section id="schedule" class="section-padding bg-brand-cream dark:bg-gray-900 relative overflow-hidden">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Termine & Ereignisse</h2><p class="section-subtitle mx-auto">Bevorstehende Besuche und Veranstaltungen</p></div>
             <div class="space-y-6">
-                <div class="card flex items-start gap-6 p-6 gs-reveal" data-gs-delay="0.1"><div class="flex-shrink-0 w-16 h-16 bg-brand-yellow rounded-full flex flex-col items-center justify-center text-white"><span class="font-heading font-bold text-xl leading-none">15</span><span class="text-xs font-medium">MAI</span></div><div class="flex-1"><h3 class="font-heading font-bold text-lg text-brand-charcoal">Erste Lesesession</h3><p class="text-brand-gray mt-1">Einführung in interaktives Geschichtenerzählen mit der 1. und 2. Klasse.</p><p class="text-brand-gray text-sm mt-2"><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>9:00 – 11:00 Uhr</p></div></div>
-                <div class="card flex items-start gap-6 p-6 gs-reveal" data-gs-delay="0.2"><div class="flex-shrink-0 w-16 h-16 bg-brand-green rounded-full flex flex-col items-center justify-center text-white"><span class="font-heading font-bold text-xl leading-none">22</span><span class="text-xs font-medium">MAI</span></div><div class="flex-1"><h3 class="font-heading font-bold text-lg text-brand-charcoal">Kreativer Schreibworkshop</h3><p class="text-brand-gray mt-1">Kinder erfinden eigene Geschichten mit Anleitung unseres Teams.</p><p class="text-brand-gray text-sm mt-2"><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>9:00 – 12:00 Uhr</p></div></div>
-                <div class="card flex items-start gap-6 p-6 gs-reveal" data-gs-delay="0.3"><div class="flex-shrink-0 w-16 h-16 bg-brand-coral rounded-full flex flex-col items-center justify-center text-white"><span class="font-heading font-bold text-xl leading-none">05</span><span class="text-xs font-medium">JUN</span></div><div class="flex-1"><h3 class="font-heading font-bold text-lg text-brand-charcoal">Lesefest</h3><p class="text-brand-gray mt-1">Ein Event zum Feiern des Lesens mit Spielen, Preisen und Mini-Bücherbasar.</p><p class="text-brand-gray text-sm mt-2"><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>10:00 – 14:00 Uhr</p></div></div>
+                <div class="card flex items-start gap-6 p-6 gs-reveal dark:bg-gray-800" data-gs-delay="0.1"><div class="flex-shrink-0 w-16 h-16 bg-brand-yellow rounded-full flex flex-col items-center justify-center text-white"><span class="font-heading font-bold text-xl leading-none">15</span><span class="text-xs font-medium">MAI</span></div><div class="flex-1"><h3 class="font-heading font-bold text-lg text-brand-charcoal dark:text-white">Erste Lesesession</h3><p class="text-brand-gray dark:text-gray-300 mt-1">Einführung in interaktives Geschichtenerzählen mit der 1. und 2. Klasse.</p><p class="text-brand-gray dark:text-gray-400 text-sm mt-2"><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>9:00 – 11:00 Uhr</p></div></div>
+                <div class="card flex items-start gap-6 p-6 gs-reveal dark:bg-gray-800" data-gs-delay="0.2"><div class="flex-shrink-0 w-16 h-16 bg-brand-green rounded-full flex flex-col items-center justify-center text-white"><span class="font-heading font-bold text-xl leading-none">22</span><span class="text-xs font-medium">MAI</span></div><div class="flex-1"><h3 class="font-heading font-bold text-lg text-brand-charcoal dark:text-white">Kreativer Schreibworkshop</h3><p class="text-brand-gray dark:text-gray-300 mt-1">Kinder erfinden eigene Geschichten mit Anleitung unseres Teams.</p><p class="text-brand-gray dark:text-gray-400 text-sm mt-2"><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>9:00 – 12:00 Uhr</p></div></div>
+                <div class="card flex items-start gap-6 p-6 gs-reveal dark:bg-gray-800" data-gs-delay="0.3"><div class="flex-shrink-0 w-16 h-16 bg-brand-coral rounded-full flex flex-col items-center justify-center text-white"><span class="font-heading font-bold text-xl leading-none">05</span><span class="text-xs font-medium">JUN</span></div><div class="flex-1"><h3 class="font-heading font-bold text-lg text-brand-charcoal dark:text-white">Lesefest</h3><p class="text-brand-gray dark:text-gray-300 mt-1">Ein Event zum Feiern des Lesens mit Spielen, Preisen und Mini-Bücherbasar.</p><p class="text-brand-gray dark:text-gray-400 text-sm mt-2"><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>10:00 – 14:00 Uhr</p></div></div>
             </div>
         </div>
     </section>
@@ -249,15 +254,15 @@
     <div class="wave-divider -mt-1 rotate-180"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,96L80,90.7C160,85,320,75,480,74.7C640,75,800,85,960,80C1120,75,1280,53,1360,42.7L1440,32L1440,120L0,120Z"></path></svg></div>
 
     <!-- FAQ Section -->
-    <section id="faq" class="section-padding bg-white relative overflow-hidden">
+    <section id="faq" class="section-padding bg-white dark:bg-gray-800 relative overflow-hidden">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Häufige Fragen</h2><p class="section-subtitle mx-auto">Alles, was ihr über ZOL wissen müsst</p></div>
             <div class="space-y-4 gs-reveal">
-                <div class="faq-item card overflow-hidden"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal pr-4">Was ist ZOL genau?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray text-lg"><p>ZOL (Zukunft Orientiertes Lernen) ist ein von Schüler*innen geleitetes Projekt, das Leseförderung durch interaktive Aktivitäten an der Gaißau Volksschule betreibt. Wir besuchen die Schule regelmäßig und gestalten gemeinsame Leseerlebnisse.</p></div></div>
-                <div class="faq-item card overflow-hidden"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal pr-4">Wer kann bei ZOL mitmachen?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray text-lg"><p>Jede*r Schüler*in, die/der Freude am Lesen und am Arbeiten mit Kindern hat, ist herzlich willkommen! Kontaktiere uns einfach über das Kontaktformular.</p></div></div>
-                <div class="faq-item card overflow-hidden"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal pr-4">Wo finden die Aktivitäten statt?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray text-lg"><p>Alle Aktivitäten finden direkt an der Gaißau Volksschule statt. Wir arbeiten eng mit den Lehrer*innen zusammen und nutzen die Klassenräume sowie den Schulhof für unsere Projekte.</p></div></div>
-                <div class="faq-item card overflow-hidden"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal pr-4">Wie oft besucht ihr die Schule?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray text-lg"><p>Wir besuchen die Gaißau Volksschule in der Regel alle zwei Wochen. Bei besonderen Veranstaltungen wie dem Lesefest kommen wir natürlich öfter vorbei!</p></div></div>
-                <div class="faq-item card overflow-hidden"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal pr-4">Wie kann ich ZOL unterstützen?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray text-lg"><p>Ihr könnt als Teammitglied mitmachen, Bücher oder Materialien spenden, oder einfach das Projekt weiterempfehlen. Jede Unterstützung zählt!</p></div></div>
+                <div class="faq-item card overflow-hidden dark:bg-gray-700"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Was ist ZOL genau?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray dark:text-gray-300 text-lg"><p>ZOL (Zukunft Orientiertes Lernen) ist ein von Schüler*innen geleitetes Projekt, das Leseförderung durch interaktive Aktivitäten an der Gaißau Volksschule betreibt.</p></div></div>
+                <div class="faq-item card overflow-hidden dark:bg-gray-700"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wer kann bei ZOL mitmachen?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray dark:text-gray-300 text-lg"><p>Jede*r Schüler*in, die/der Freude am Lesen und am Arbeiten mit Kindern hat, ist herzlich willkommen!</p></div></div>
+                <div class="faq-item card overflow-hidden dark:bg-gray-700"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wo finden die Aktivitäten statt?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray dark:text-gray-300 text-lg"><p>Alle Aktivitäten finden direkt an der Gaißau Volksschule statt. Wir arbeiten eng mit den Lehrer*innen zusammen.</p></div></div>
+                <div class="faq-item card overflow-hidden dark:bg-gray-700"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wie oft besucht ihr die Schule?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray dark:text-gray-300 text-lg"><p>Wir besuchen die Gaißau Volksschule in der Regel alle zwei Wochen.</p></div></div>
+                <div class="faq-item card overflow-hidden dark:bg-gray-700"><button class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wie kann ich ZOL unterstützen?</span><svg class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-content hidden px-6 pb-6 text-brand-gray dark:text-gray-300 text-lg"><p>Ihr könnt als Teammitglied mitmachen, Bücher oder Materialien spenden, oder einfach das Projekt weiterempfehlen.</p></div></div>
             </div>
         </div>
     </section>
@@ -266,13 +271,13 @@
     <div class="wave-divider -mt-1"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,32L60,37.3C120,43,240,53,360,58.7C480,64,600,64,720,58.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,120L0,120Z"></path></svg></div>
 
     <!-- Join / Mitmachen Section -->
-    <section id="join" class="section-padding bg-brand-cream relative overflow-hidden">
+    <section id="join" class="section-padding bg-brand-cream dark:bg-gray-900 relative overflow-hidden">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Mitmachen</h2><p class="section-subtitle mx-auto">Werde Teil des ZOL-Teams in drei einfachen Schritten</p></div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="card p-8 text-center gs-reveal" data-gs-delay="0.1"><div class="w-16 h-16 bg-brand-yellow rounded-full flex items-center justify-center mx-auto mb-6 text-white font-heading font-bold text-2xl">1</div><h3 class="font-heading font-bold text-xl text-brand-charcoal mb-3">Kontakt aufnehmen</h3><p class="text-brand-gray">Schreib uns eine E-Mail oder sprich uns direkt an. Wir freuen uns über jede Nachricht!</p></div>
-                <div class="card p-8 text-center gs-reveal" data-gs-delay="0.2"><div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6 text-white font-heading font-bold text-2xl">2</div><h3 class="font-heading font-bold text-xl text-brand-charcoal mb-3">Kennlern-Treffen</h3><p class="text-brand-gray">Bei einem kurzen Treffen lernst du das Team kennen und erfährst, was dich erwartet.</p></div>
-                <div class="card p-8 text-center gs-reveal" data-gs-delay="0.3"><div class="w-16 h-16 bg-brand-coral rounded-full flex items-center justify-center mx-auto mb-6 text-white font-heading font-bold text-2xl">3</div><h3 class="font-heading font-bold text-xl text-brand-charcoal mb-3">Loslegen!</h3><p class="text-brand-gray">Ab dem nächsten Schulbesuch bist du dabei und gestaltest die Aktivitäten mit.</p></div>
+                <div class="card p-8 text-center gs-reveal dark:bg-gray-800" data-gs-delay="0.1"><div class="w-16 h-16 bg-brand-yellow rounded-full flex items-center justify-center mx-auto mb-6 text-white font-heading font-bold text-2xl">1</div><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-3">Kontakt aufnehmen</h3><p class="text-brand-gray dark:text-gray-300">Schreib uns eine E-Mail oder sprich uns direkt an.</p></div>
+                <div class="card p-8 text-center gs-reveal dark:bg-gray-800" data-gs-delay="0.2"><div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6 text-white font-heading font-bold text-2xl">2</div><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-3">Kennlern-Treffen</h3><p class="text-brand-gray dark:text-gray-300">Lerne das Team kennen und erfahre, was dich erwartet.</p></div>
+                <div class="card p-8 text-center gs-reveal dark:bg-gray-800" data-gs-delay="0.3"><div class="w-16 h-16 bg-brand-coral rounded-full flex items-center justify-center mx-auto mb-6 text-white font-heading font-bold text-2xl">3</div><h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-3">Loslegen!</h3><p class="text-brand-gray dark:text-gray-300">Ab dem nächsten Schulbesuch bist du dabei!</p></div>
             </div>
         </div>
     </section>
@@ -281,12 +286,12 @@
     <div class="wave-divider -mt-1 rotate-180"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-20 md:h-28"><path fill="#FFFBEB" d="M0,32L60,37.3C120,43,240,53,360,58.7C480,64,600,64,720,58.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,120L0,120Z"></path></svg></div>
 
     <!-- Partners Section -->
-    <section id="partners" class="section-padding bg-white relative overflow-hidden">
+    <section id="partners" class="section-padding bg-white dark:bg-gray-800 relative overflow-hidden">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 gs-reveal"><h2 class="section-title">Unsere Partner</h2><p class="section-subtitle mx-auto">Gemeinsam stark für junge Leser*innen</p></div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="card p-8 flex items-center gap-6 gs-reveal" data-gs-delay="0.1"><div class="w-20 h-20 bg-brand-green/20 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-10 h-10 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><div><h3 class="font-heading font-bold text-lg text-brand-charcoal">Gaißau Volksschule</h3><p class="text-brand-gray text-sm mt-1">Unsere Partnerschule — der Ort, an dem unsere Projekte lebendig werden.</p></div></div>
-                <div class="card p-8 flex items-center gap-6 gs-reveal" data-gs-delay="0.2"><div class="w-20 h-20 bg-brand-yellow/20 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-10 h-10 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><div><h3 class="font-heading font-bold text-lg text-brand-charcoal">Schulbibliothek</h3><p class="text-brand-gray text-sm mt-1">Stellt uns Bücher und Materialien für unsere Aktivitäten zur Verfügung.</p></div></div>
+                <div class="card p-8 flex items-center gap-6 gs-reveal dark:bg-gray-700" data-gs-delay="0.1"><div class="w-20 h-20 bg-brand-green/20 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-10 h-10 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><div><h3 class="font-heading font-bold text-lg text-brand-charcoal dark:text-white">Gaißau Volksschule</h3><p class="text-brand-gray dark:text-gray-300 text-sm mt-1">Unsere Partnerschule — der Ort, an dem unsere Projekte lebendig werden.</p></div></div>
+                <div class="card p-8 flex items-center gap-6 gs-reveal dark:bg-gray-700" data-gs-delay="0.2"><div class="w-20 h-20 bg-brand-yellow/20 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-10 h-10 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><div><h3 class="font-heading font-bold text-lg text-brand-charcoal dark:text-white">Schulbibliothek</h3><p class="text-brand-gray dark:text-gray-300 text-sm mt-1">Stellt uns Bücher und Materialien für unsere Aktivitäten zur Verfügung.</p></div></div>
             </div>
         </div>
     </section>
@@ -302,7 +307,7 @@
         </div>
         <div class="relative z-10 max-w-3xl mx-auto text-center gs-reveal">
             <h2 class="font-heading font-bold text-3xl md:text-4xl text-white mb-4">Mehr erfahren?</h2>
-            <p class="text-white/90 text-xl mb-8">Wir freuen uns über eure Nachricht! Ob Eltern, Lehrer*in oder Mitschüler*in — meldet euch und seid Teil unseres Leseabenteuers.</p>
+            <p class="text-white/90 text-xl mb-8">Wir freuen uns über eure Nachricht! Meldet euch und seid Teil unseres Leseabenteuers.</p>
             <a href="mailto:fateh.suren@gmail.com?subject=ZOL%20Kontakt&body=Hallo%20ZOL-Team,%0A%0A" class="inline-block bg-white text-brand-charcoal font-heading font-semibold px-10 py-4 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 magnetic-btn">
                 <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 Kontakt aufnehmen
@@ -311,7 +316,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-brand-charcoal py-8 px-6">
+    <footer id="footer" class="bg-brand-charcoal dark:bg-gray-950 py-8 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p class="text-white/60 text-sm">&copy; 2026 ZOL — Zukunft Orientiertes Lernen. Alle Rechte vorbehalten.</p>
             <a href="#hero" class="text-white/60 hover:text-brand-yellow transition-colors text-sm">Nach Oben</a>

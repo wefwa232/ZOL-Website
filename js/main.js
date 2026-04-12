@@ -1,6 +1,39 @@
 // ZOL Website - Main JavaScript
 gsap.registerPlugin(ScrollTrigger);
 
+// ============ THEME TOGGLE ============
+(function() {
+    var toggle = document.getElementById('theme-toggle');
+    var sunIcon = document.querySelector('.theme-icon-sun');
+    var moonIcon = document.querySelector('.theme-icon-moon');
+    
+    function setTheme(dark) {
+        if (dark) {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+            localStorage.setItem('zol-theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+            localStorage.setItem('zol-theme', 'light');
+        }
+    }
+    
+    // Check saved preference or system preference
+    var saved = localStorage.getItem('zol-theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        setTheme(true);
+    }
+    
+    if (toggle) {
+        toggle.addEventListener('click', function() {
+            setTheme(!document.documentElement.classList.contains('dark'));
+        });
+    }
+})();
+
 // ============ PRELOADER ============
 window.addEventListener('load', function() {
     setTimeout(function() {

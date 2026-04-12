@@ -1,0 +1,63 @@
+/* Custom styles for ZOL website */
+
+/* Override Tailwind CDN limitations */
+@layer base {
+    html {
+        font-family: 'Source Sans 3', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Nunito', sans-serif;
+    }
+}
+
+@layer components {
+    /* Custom component classes */
+    .btn-primary {
+        @apply bg-brand-yellow text-white font-heading font-semibold px-8 py-3 rounded-full 
+               hover:bg-brand-coral hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg;
+    }
+    
+    .btn-secondary {
+        @apply bg-brand-green text-white font-heading font-semibold px-8 py-3 rounded-full 
+               hover:bg-emerald-600 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg;
+    }
+    
+    .card {
+        @apply bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 
+               transition-all duration-300 overflow-hidden;
+    }
+    
+    .section-padding {
+        @apply py-20 px-6 md:px-12 lg:px-24;
+    }
+    
+    .section-title {
+        @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-brand-charcoal mb-4;
+    }
+    
+    .section-subtitle {
+        @apply text-brand-gray text-lg md:text-xl max-w-2xl;
+    }
+}
+
+@layer utilities {
+    /* Custom utility classes */
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-yellow to-brand-coral;
+    }
+}
+
+/* Floating animation for hero shapes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+.floating-shape {
+    animation: float 6s ease-in-out infinite;
+}

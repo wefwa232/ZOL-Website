@@ -6,12 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
 // ============ PRELOADER ============
 window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
-    
+
     setTimeout(function() {
         preloader.classList.add('hidden');
-        document.body.style.overflow = '';
-        
-        // Start hero animations after preloader
         initHeroAnimations();
     }, 1600);
 });

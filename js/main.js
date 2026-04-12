@@ -3,25 +3,6 @@
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// ============ LENIS SMOOTH SCROLL (light touch) ============
-const lenis = new Lenis({
-    duration: 0.8,
-    easing: (t) => 1 - Math.pow(1 - t, 3),
-    smoothWheel: true,
-    wheelMultiplier: 1,
-    touchMultiplier: 1,
-    infinite: false
-});
-
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-// Sync Lenis with GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-
 // ============ PRELOADER ============
 window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
@@ -336,7 +317,7 @@ function initBackToTop() {
     }, { passive: true });
 
     btn.addEventListener('click', function() {
-        lenis.scrollTo(0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
@@ -373,7 +354,7 @@ function initSmoothScroll() {
             e.preventDefault();
             var target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                lenis.scrollTo(target);
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });

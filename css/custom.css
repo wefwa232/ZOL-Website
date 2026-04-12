@@ -9,6 +9,10 @@
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Nunito', sans-serif;
     }
+    
+    section, footer {
+        scroll-margin-top: 5rem;
+    }
 }
 
 @layer components {
@@ -38,6 +42,10 @@
     
     .section-subtitle {
         @apply text-brand-gray text-lg md:text-xl max-w-2xl;
+    }
+    
+    *:focus-visible {
+        @apply outline outline-2 outline-brand-yellow outline-offset-2;
     }
 }
 

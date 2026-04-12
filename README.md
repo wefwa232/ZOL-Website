@@ -1,12 +1,12 @@
-# ZOL -- Zukunft Orientiertes Lernen
+# ZOL — Zukunft Orientiertes Lernen
 
-A showcase website for the ZOL reading project at Gaiau Volksschule.
+Eine Showcase-Website für das ZOL-Leseprojekt an der Gaißau Volksschule.
 
-## About
+## Über
 
-ZOL (Zukunft Orientiertes Lernen) is a student-led initiative dedicated to promoting reading and interactive learning among young children at Gaiau Volksschule.
+ZOL (Zukunft Orientiertes Lernen) ist eine von Schüler*innen initiierte Initiative, die sich der Leseförderung und dem interaktiven Lernen bei jungen Kindern an der Gaißau Volksschule widmet.
 
-## Tech Stack
+## Technologien
 
 - HTML5
 - Tailwind CSS (CDN)
@@ -14,31 +14,31 @@ ZOL (Zukunft Orientiertes Lernen) is a student-led initiative dedicated to promo
 - AOS (Animate on Scroll)
 - Vanilla JavaScript
 
-## How to Update Content
+## Inhalte Bearbeiten
 
-### Editing Text
-Open `index.html` in any text editor and find the section you want to edit. All text is directly in the HTML -- just change the content between tags.
+### Text Bearbeiten
+Öffne `index.html` in einem beliebigen Texteditor und finde den Abschnitt, den du bearbeiten möchtest. Der gesamte Text steht direkt im HTML — ändere einfach den Inhalt zwischen den Tags.
 
-### Adding Images
-1. Place your images in the `images/` folder
-2. Replace placeholder SVG blocks with `<img>` tags:
+### Bilder Hinzufügen
+1. Lege deine Bilder im Ordner `images/` ab
+2. Ersetze die Platzhalter-SVG-Blöcke durch `<img>`-Tags:
    ```html
-   <img src="images/your-photo.jpg" alt="Description" class="w-full h-full object-cover rounded-xl">
+   <img src="images/dein-foto.jpg" alt="Beschreibung" class="w-full h-full object-cover rounded-xl">
    ```
 
-### Updating Team Members
-Find the team cards in the `#team` section and edit the names/roles. Add more cards by copying an existing card block.
+### Teammitglieder Aktualisieren
+Finde die Teamkarten im `#team`-Abschnitt und bearbeite die Namen/Rollen. Füge weitere Karten hinzu, indem du einen bestehenden Karten-Block kopierst.
 
-### Updating Events
-Find the event cards in the `#schedule` section and edit dates, titles, and descriptions.
+### Termine Aktualisieren
+Finde die Ereigniskarten im `#schedule`-Abschnitt und bearbeite Daten, Titel und Beschreibungen.
 
-## Deployment (GitHub Pages)
+## Veröffentlichung (GitHub Pages)
 
-1. Push this repository to GitHub
-2. Go to Settings > Pages
-3. Select `main` branch as source
-4. Your site will be live at `https://yourusername.github.io/repository-name`
+1. Pushe dieses Repository auf GitHub
+2. Gehe zu Settings > Pages
+3. Wähle `main`-Branch als Quelle
+4. Deine Website ist live unter `https://deinusername.github.io/repository-name`
 
-## License
+## Lizenz
 
-This project is for educational purposes.
+Dieses Projekt dient Bildungszwecken.

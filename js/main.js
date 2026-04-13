@@ -114,15 +114,14 @@ window.addEventListener('load', function() {
     updateHeroBottom();
     window.addEventListener('resize', updateHeroBottom);
 
+    // Navbar: always visible, add shadow on scroll
     function handleNavScroll() {
         if (!navTicking && navbar) {
             window.requestAnimationFrame(function() {
                 if (heroBottom <= 0) {
-                    navbar.classList.remove('-translate-y-full');
-                    navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm', 'translate-y-0');
+                    navbar.classList.add('shadow-md');
                 } else {
-                    navbar.classList.add('-translate-y-full');
-                    navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm', 'translate-y-0');
+                    navbar.classList.remove('shadow-md');
                 }
                 navTicking = false;
             });

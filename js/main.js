@@ -6,64 +6,88 @@ gsap.registerPlugin(ScrollTrigger);
     var toggle = document.getElementById('theme-toggle');
     var sunIcon = document.querySelector('.theme-icon-sun');
     var moonIcon = document.querySelector('.theme-icon-moon');
-    var iconWrap = document.querySelector('.theme-icon-wrap');
-    var ripple = document.querySelector('.theme-ripple');
+    var indicator = document.getElementById('theme-indicator');
     var isAnimating = false;
-    
-    function setTheme(dark) {
+
+    function setTheme(dark, animate) {
         if (dark) {
             document.documentElement.classList.add('dark');
-            sunIcon.classList.add('hidden');
-            moonIcon.classList.remove('hidden');
             localStorage.setItem('zol-theme', 'dark');
         } else {
             document.documentElement.classList.remove('dark');
-            sunIcon.classList.remove('hidden');
-            moonIcon.classList.add('hidden');
             localStorage.setItem('zol-theme', 'light');
         }
     }
-    
+
     // Check saved preference or system preference
     var saved = localStorage.getItem('zol-theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        setTheme(true);
+    var isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    // Set initial indicator position
+    if (isDark) {
+        if (indicator) indicator.style.transform = 'translateX(32px)';
+        setTheme(true, false);
     }
-    
-    if (toggle) {
-        toggle.addEventListener('click', function() {
-            if (isAnimating) return;
-            isAnimating = true;
-            
-            var isDark = !document.documentElement.classList.contains('dark');
-            
-            // Ripple animation
-            if (ripple) {
-                ripple.style.transform = 'scale(1)';
-                ripple.style.opacity = '1';
-                setTimeout(function() {
-                    ripple.style.transform = 'scale(0)';
-                    ripple.style.opacity = '0';
-                }, 500);
-            }
-            
-            // Icon rotation animation
-            if (iconWrap) {
-                gsap.to(iconWrap, {
-                    rotation: isDark ? -180 : 180,
-                    duration: 0.5,
-                    ease: 'power2.inOut',
-                    onComplete: function() {
-                        gsap.set(iconWrap, { rotation: 0 });
-                        setTheme(isDark);
-                        isAnimating = false;
+
+    function switchTheme() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        var currentlyDark = document.documentElement.classList.contains('dark');
+        var goingDark = !currentlyDark;
+
+        // Animate indicator slide
+        if (indicator) {
+            gsap.to(indicator, {
+                x: goingDark ? 32 : 0,
+                duration: 0.4,
+                ease: 'power2.inOut',
+                backgroundColor: goingDark ? '#818CF8' : '#F59E0B',
+                onComplete: function() {
+                    setTheme(goingDark, false);
+                    setTimeout(function() { isAnimating = false; }, 200);
+                }
+            });
+        }
+
+        // Icon spin animation
+        if (sunIcon && moonIcon) {
+            var spinIcon = goingDark ? sunIcon : moonIcon;
+            gsap.to(spinIcon, {
+                rotation: goingDark ? -180 : 180,
+                scale: 0.5,
+                duration: 0.2,
+                ease: 'power2.in',
+                onComplete: function() {
+                    if (goingDark) {
+                        sunIcon.style.opacity = '0.4';
+                        moonIcon.style.opacity = '1';
+                    } else {
+                        sunIcon.style.opacity = '1';
+                        moonIcon.style.opacity = '0.4';
                     }
-                });
-            } else {
-                setTheme(isDark);
-                isAnimating = false;
-            }
+                    gsap.to(spinIcon, {
+                        rotation: 0,
+                        scale: 1,
+                        duration: 0.3,
+                        ease: 'back.out(1.7)'
+                    });
+                }
+            });
+        }
+    }
+
+    if (toggle) {
+        toggle.addEventListener('click', switchTheme);
+        toggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchTheme(); }
         });
+    }
+
+    // Set initial icon opacities
+    if (sunIcon && moonIcon) {
+        sunIcon.style.opacity = isDark ? '0.4' : '1';
+        moonIcon.style.opacity = isDark ? '1' : '0.4';
     }
 })();
 

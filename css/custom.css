@@ -59,13 +59,11 @@
         @apply outline outline-2 outline-brand-yellow outline-offset-2;
     }
 
-    /* Theme toggle icon rotation animation */
-    .theme-icon-rotate {
-        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Theme toggle pill animation */
+    .theme-icon-sun, .theme-icon-moon {
+        transition: opacity 0.3s ease;
     }
-    .group:hover .theme-icon-rotate {
-        transform: rotate(15deg);
-    }
+    #theme-toggle:hover { @apply bg-brand-gray/20 dark:bg-gray-700; }
 }
 
 /* ============ PRELOADER ============ */

@@ -6,6 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
     var toggle = document.getElementById('theme-toggle');
     var sunIcon = document.querySelector('.theme-icon-sun');
     var moonIcon = document.querySelector('.theme-icon-moon');
+    var iconWrap = document.querySelector('.theme-icon-wrap');
+    var ripple = document.querySelector('.theme-ripple');
+    var isAnimating = false;
     
     function setTheme(dark) {
         if (dark) {
@@ -29,7 +32,37 @@ gsap.registerPlugin(ScrollTrigger);
     
     if (toggle) {
         toggle.addEventListener('click', function() {
-            setTheme(!document.documentElement.classList.contains('dark'));
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            var isDark = !document.documentElement.classList.contains('dark');
+            
+            // Ripple animation
+            if (ripple) {
+                ripple.style.transform = 'scale(1)';
+                ripple.style.opacity = '1';
+                setTimeout(function() {
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.opacity = '0';
+                }, 500);
+            }
+            
+            // Icon rotation animation
+            if (iconWrap) {
+                gsap.to(iconWrap, {
+                    rotation: isDark ? -180 : 180,
+                    duration: 0.5,
+                    ease: 'power2.inOut',
+                    onComplete: function() {
+                        gsap.set(iconWrap, { rotation: 0 });
+                        setTheme(isDark);
+                        isAnimating = false;
+                    }
+                });
+            } else {
+                setTheme(isDark);
+                isAnimating = false;
+            }
         });
     }
 })();
@@ -133,7 +166,7 @@ function initScrollAnimations() {
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
-                    end: 'top 20%',
+                    end: 'bottom top',
                     toggleActions: 'play reverse play reverse'
                 }
             }
@@ -146,7 +179,7 @@ function initScrollAnimations() {
             {
                 opacity: 1, x: 0, duration: 0.8, ease: 'power2.out',
                 scrollTrigger: {
-                    trigger: el, start: 'top 85%', end: 'top 20%',
+                    trigger: el, start: 'top 85%', end: 'bottom top',
                     toggleActions: 'play reverse play reverse'
                 }
             }
@@ -159,7 +192,7 @@ function initScrollAnimations() {
             {
                 opacity: 1, x: 0, duration: 0.8, ease: 'power2.out',
                 scrollTrigger: {
-                    trigger: el, start: 'top 85%', end: 'top 20%',
+                    trigger: el, start: 'top 85%', end: 'bottom top',
                     toggleActions: 'play reverse play reverse'
                 }
             }

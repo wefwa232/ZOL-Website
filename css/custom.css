@@ -28,7 +28,7 @@
     }
     .card {
         @apply bg-white rounded-2xl shadow-md overflow-hidden;
-        transition: box-shadow 0.4s ease;
+        transition: box-shadow 0.4s ease, background-color 0.5s ease;
     }
     .card:hover { @apply shadow-xl; }
     .section-padding { @apply py-20 px-6 md:px-12 lg:px-24; }
@@ -57,6 +57,14 @@
 
     *:focus-visible {
         @apply outline outline-2 outline-brand-yellow outline-offset-2;
+    }
+
+    /* Theme toggle icon rotation animation */
+    .theme-icon-rotate {
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .group:hover .theme-icon-rotate {
+        transform: rotate(15deg);
     }
 }
 

@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 
     // Set initial indicator position
     if (isDark) {
-        if (indicator) indicator.style.transform = 'translateX(32px)';
+        if (indicator) indicator.style.transform = 'translateX(36px)';
         setTheme(true, false);
     }
 
@@ -39,7 +39,7 @@ gsap.registerPlugin(ScrollTrigger);
         // Animate indicator slide
         if (indicator) {
             gsap.to(indicator, {
-                x: goingDark ? 32 : 0,
+                x: goingDark ? 36 : 0,
                 duration: 0.4,
                 ease: 'power2.inOut',
                 backgroundColor: goingDark ? '#818CF8' : '#F59E0B',

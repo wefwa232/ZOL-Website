@@ -13,9 +13,17 @@ gsap.registerPlugin(ScrollTrigger);
         if (dark) {
             document.documentElement.classList.add('dark');
             localStorage.setItem('zol-theme', 'dark');
+            document.body.style.background = '#0F2818';
+            document.body.style.color = '#F7F3EC';
+            var hero = document.getElementById('hero');
+            if (hero) hero.style.background = '#0F2818';
         } else {
             document.documentElement.classList.remove('dark');
             localStorage.setItem('zol-theme', 'light');
+            document.body.style.background = '#F7F3EC';
+            document.body.style.color = '#1A1208';
+            var hero2 = document.getElementById('hero');
+            if (hero2) hero2.style.background = '#F7F3EC';
         }
     }
 
@@ -154,29 +162,37 @@ window.addEventListener('load', function () {
 
 // ============ HERO ANIMATIONS ============
 function initHeroAnimations() {
-    if (typeof Typed !== 'undefined') {
-        new Typed('#typed-headline', {
-            strings: ['Lesen Eröffnet<br><span class="text-gradient">Neue Welten</span>', 'Geschichten Verbinden<br><span class="text-gradient">Menschen</span>', 'Lernen Macht<br><span class="text-gradient">Freude</span>'],
-            typeSpeed: 50, backSpeed: 30, backDelay: 2500, loop: true, showCursor: true, cursorChar: '|', contentType: 'html'
-        });
-    }
-    gsap.from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.8, delay: 0.3, ease: 'power2.out' });
-    gsap.from('.hero-description', { opacity: 0, y: 30, duration: 0.8, delay: 0.5, ease: 'power2.out' });
-    gsap.from('.hero-buttons', { opacity: 0, y: 30, duration: 0.8, delay: 0.7, ease: 'power2.out' });
-    gsap.from('.hero-scroll', { opacity: 0, duration: 0.6, delay: 1.2, ease: 'power2.out' });
+    // Animate horizontal rules stretching out (print press effect)
+    var rules = document.querySelectorAll('.hero-rule');
+    rules.forEach(function(rule, i) {
+        setTimeout(function() {
+            rule.classList.add('revealed');
+        }, 200 + i * 400);
+    });
 
-    var heroParticles = document.getElementById('hero-particles');
-    if (heroParticles) {
-        var particles = heroParticles.querySelectorAll('.particle');
-        document.addEventListener('mousemove', function (e) {
-            var x = (e.clientX / window.innerWidth - 0.5) * 2;
-            var y = (e.clientY / window.innerHeight - 0.5) * 2;
-            particles.forEach(function (p, i) {
-                gsap.to(p, { x: x * (i + 1) * 8, y: y * (i + 1) * 8, duration: 1, ease: 'power2.out' });
-            });
-        });
-    }
+    // Animate title lines sliding up from below (masking)
+    var titleLines = document.querySelectorAll('.hero-title-line');
+    titleLines.forEach(function(line, i) {
+        setTimeout(function() {
+            line.classList.add('revealed');
+        }, 400 + i * 160);
+    });
+
+    // Metadata row fade in
+    gsap.from('.hero-subtitle', { opacity: 0, y: 14, duration: 0.9, delay: 0.15, ease: 'power2.out' });
+
+    // Main headline container opacity
+    gsap.to('.hero-description', { opacity: 1, duration: 0.01, delay: 0.35 });
+
+    // Kicker description and buttons
+    gsap.from('.hero-buttons', { opacity: 0, y: 24, duration: 0.9, delay: 0.9, ease: 'power2.out' });
+    gsap.to('.hero-buttons', { opacity: 1, duration: 0.01, delay: 0.85 });
+
+    // Scroll indicator
+    gsap.from('.hero-scroll', { opacity: 0, y: 12, duration: 0.7, delay: 1.3, ease: 'power2.out' });
+    gsap.to('.hero-scroll', { opacity: 1, duration: 0.01, delay: 1.25 });
 }
+
 
 // ============ GSAP SCROLL ANIMATIONS (re-trigger on scroll up AND down) ============
 function initScrollAnimations() {

@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,20 +36,22 @@
                     colors: {
                         brand: {
                             yellow: '#F5A623',
-                            amber:  '#F5A623',
-                            green:  '#0F2818',
-                            coral:  '#C4552A',
-                            cream:  '#F7F3EC',
-                            forest: '#0F2818',
-                            leaf:   '#1A3D24',
-                            charcoal: '#1A1208',
-                            gray:   '#8A9E82',
-                            mist:   '#8A9E82',
+                            green: '#059669',
+                            coral: '#F43F5E',
+                            cream: '#FAFAFA',
+                            charcoal: '#0F172A',
+                            gray: '#64748B',
                         },
+                        gray: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        coral: { 50: '#FFF7ED', 100: '#FFEDD5' }
                     },
                     fontFamily: {
-                        heading: ['DM Serif Display', 'Georgia', 'serif'],
-                        body:    ['DM Sans', 'Helvetica Neue', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
                     }
                 }
             }
@@ -57,7 +59,8 @@
     </script>
 </head>
 
-<body class="font-body antialiased overflow-x-hidden" style="background:#F7F3EC;color:#1A1208;">
+<body
+    class="font-body bg-brand-cream dark:bg-gray-950 text-brand-charcoal dark:text-white antialiased overflow-x-hidden transition-colors duration-[1200ms] ease-in-out">
 
     <!-- Mouse Glow Spotlight -->
     <div id="mouse-glow"
@@ -66,12 +69,11 @@
 
     <!-- Preloader -->
     <div id="preloader"
-        class="fixed inset-0 z-[100] flex items-center justify-center"
-        style="background: #0F2818;">
+        class="fixed inset-0 z-[100] bg-brand-cream dark:bg-gray-950 flex items-center justify-center transition-colors duration-[1200ms] ease-in-out">
         <div class="text-center">
-            <div class="preloader-logo">ZOL</div>
-            <div style="width:160px;height:2px;background:rgba(247,243,236,0.15);margin:1.5rem auto 0;overflow:hidden;">
-                <div class="preloader-bar" style="height:100%;background:#F5A623;"></div>
+            <div class="text-6xl font-heading font-extrabold text-brand-yellow mb-4 preloader-logo">ZOL</div>
+            <div class="w-48 h-1 bg-brand-gray/20 rounded-full overflow-hidden mx-auto">
+                <div class="h-full bg-brand-yellow rounded-full preloader-bar"></div>
             </div>
         </div>
     </div>
@@ -149,54 +151,60 @@
         </div>
     </nav>
 
-    <!-- Hero Section — Editorial Layout -->
-    <section id="hero" class="relative overflow-hidden pt-20" style="min-height:100svh;background:#F7F3EC;">
-        <!-- Dot grid (handled in CSS ::before) -->
-
-        <!-- Decorative editorial rules -->
-        <div class="absolute top-0 left-0 right-0" style="height:1px;background:linear-gradient(to right,transparent,rgba(15,40,24,0.1),transparent);"></div>
-
-        <!-- Background giant watermark ZOL -->
-        <div class="hero-watermark" aria-hidden="true">ZOL</div>
-
-        <!-- Main editorial content -->
-        <div class="relative z-10 flex flex-col justify-end" style="min-height:calc(100svh - 5rem);padding:4rem clamp(1.5rem,6vw,6rem) 5rem;">
-            <!-- Top metadata row -->
-            <div class="flex items-center gap-6 mb-8 hero-subtitle">
-                <span class="hero-eyebrow">Seit 2025 · Gaißau, Österreich</span>
-                <span style="flex:1;height:1px;background:rgba(15,40,24,0.12);"></span>
-                <span class="hero-eyebrow">iss#01 — Leseförderung</span>
-            </div>
-
-            <!-- Horizontal rule (print press wipe animation) -->
-            <div class="hero-rule mb-6"></div>
-
-            <!-- Giant display headline -->
-            <h1 style="margin-bottom:2rem;" class="hero-description" aria-label="Wir machen Lesen zu einem Abenteuer">
-                <div class="hero-title-line"><span class="display-xl" style="color:#1A1208;">Wir machen Lesen</span></div>
-                <div class="hero-title-line" style="animation-delay:0.12s;"><span class="display-xl" style="color:#1A1208;">zu einem <em style="color:#F5A623;font-style:italic;">Abenteuer.</em></span></div>
-            </h1>
-
-            <!-- Bottom row with kicker + buttons -->
-            <div class="flex flex-col md:flex-row md:items-end gap-8 hero-buttons">
-                <p style="max-width:36ch;font-size:1.05rem;line-height:1.7;color:#8A9E82;font-family:var(--font-body);flex-shrink:0;">
-                    Interaktive Lese- und Lernprojekte an der Gaißau Volksschule — junge Köpfe inspirieren, eine Geschichte nach der anderen.
-                </p>
-                <div style="height:60px;width:1px;background:rgba(15,40,24,0.15);flex-shrink:0;" class="hidden md:block"></div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#about" class="btn-primary magnetic-btn"><span>Unser Projekt</span></a>
-                    <a href="#activities" class="btn-secondary magnetic-btn"><span>Aktivitäten</span></a>
-                </div>
-            </div>
-
-            <!-- Second horizontal rule -->
-            <div class="hero-rule mt-8" style="animation-delay:0.4s;"></div>
+    <!-- Hero Section -->
+    <section id="hero"
+        class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-brand-cream via-amber-50 to-brand-cream dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-[1200ms] ease-in-out pt-16">
+        <div id="hero-particles" class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+            <svg class="particle absolute w-12 h-12 text-brand-yellow/30" style="top:20%;left:10%" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="particle absolute w-16 h-16 text-brand-green/20" style="top:30%;right:15%" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                    d="M21 4H3a1 1 0 00-1 1v14a1 1 0 001 1h18a1 1 0 001-1V5a1 1 0 00-1-1zM4 18V6h7v12H4zm9 0V6h7v12h-7z" />
+            </svg>
+            <svg class="particle absolute w-8 h-8 text-brand-coral/25" style="bottom:30%;left:20%" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="particle absolute w-10 h-10 text-brand-green/20" style="top:55%;right:25%" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                    d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" />
+            </svg>
+            <svg class="particle absolute w-14 h-14 text-brand-yellow/15" style="top:15%;right:40%" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="particle absolute w-9 h-9 text-brand-coral/20" style="bottom:20%;right:10%" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                    d="M21 4H3a1 1 0 00-1 1v14a1 1 0 001 1h18a1 1 0 001-1V5a1 1 0 00-1-1zM4 18V6h7v12H4zm9 0V6h7v12h-7z" />
+            </svg>
         </div>
 
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 right-12 hero-scroll flex flex-col items-center gap-2">
-            <a href="#stats" aria-label="Nach unten scrollen" class="flex flex-col items-center gap-2">
-                <span style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#8A9E82;writing-mode:vertical-rl;">Scrollen</span>
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+            <p class="text-brand-green font-heading font-semibold text-lg md:text-xl mb-4 tracking-wide hero-subtitle">
+                Zukunft Orientiertes Lernen</p>
+            <h1
+                class="font-heading font-extrabold text-5xl md:text-6xl lg:text-7xl text-brand-charcoal dark:text-white mb-6 leading-tight">
+                <span id="typed-headline"></span>
+            </h1>
+            <p class="text-brand-gray dark:text-gray-300 text-xl md:text-2xl mb-10 max-w-2xl mx-auto hero-description">
+                Interaktive Lese- und Lernprojekte an der Gaißau Volksschule — junge Köpfe inspirieren, eine Geschichte
+                nach der anderen.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center hero-buttons">
+                <a href="#about" class="btn-primary text-lg px-10 py-4 magnetic-btn">Unser Projekt</a>
+                <a href="#activities" class="btn-secondary text-lg px-10 py-4 magnetic-btn">Aktivitäten</a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hero-scroll">
+            <a href="#stats" class="block" aria-label="Nach unten scrollen">
                 <div class="scroll-mouse">
                     <div class="scroll-wheel"></div>
                 </div>
@@ -204,29 +212,50 @@
         </div>
     </section>
 
-    <!-- Stats Section — Forest Canvas -->
-    <section id="stats" style="background:#0F2818;padding:5rem clamp(1.5rem,6vw,6rem);">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4" style="border:1px solid rgba(247,243,236,0.08);">
-                <div class="stat-item text-center" style="padding:3rem 2rem;border-right:1px solid rgba(247,243,236,0.08);">
-                    <div class="stat-number counter" data-target="50">0</div>
-                    <div class="stat-label">Kinder erreicht</div>
+    <!-- Wave -->
+    <div class="wave-divider -mt-1 text-white dark:text-gray-950"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"
+            class="w-full h-20 md:h-28">
+            <path fill="currentColor"
+                d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z">
+            </path>
+        </svg></div>
+
+    <!-- Stats Section -->
+    <section id="stats"
+        class="py-16 bg-white dark:bg-gray-900 relative transition-colors duration-[1200ms] ease-in-out">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center stat-item">
+                    <div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-yellow counter"
+                        data-target="50">0</div>
+                    <div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">Kinder erreicht</div>
                 </div>
-                <div class="stat-item text-center" style="padding:3rem 2rem;border-right:1px solid rgba(247,243,236,0.08);">
-                    <div class="stat-number counter" data-target="12">0</div>
-                    <div class="stat-label">Schulbesuche</div>
+                <div class="text-center stat-item">
+                    <div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-green counter"
+                        data-target="12">0</div>
+                    <div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">Besuche</div>
                 </div>
-                <div class="stat-item text-center" style="padding:3rem 2rem;border-right:1px solid rgba(247,243,236,0.08);">
-                    <div class="stat-number counter" data-target="3">0</div>
-                    <div class="stat-label">Aktive Teams</div>
+                <div class="text-center stat-item">
+                    <div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-coral counter"
+                        data-target="3">0</div>
+                    <div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">Aktive Teams</div>
                 </div>
-                <div class="stat-item text-center" style="padding:3rem 2rem;">
-                    <div class="stat-number counter" data-target="100">0</div>
-                    <div class="stat-label">% Leidenschaft</div>
+                <div class="text-center stat-item">
+                    <div class="text-4xl md:text-5xl font-heading font-extrabold text-brand-yellow counter"
+                        data-target="100">0</div>
+                    <div class="text-brand-gray dark:text-gray-300 mt-2 font-medium">% Leidenschaft</div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Wave -->
+    <div class="wave-divider -mt-1 rotate-180 text-white dark:text-gray-950"><svg viewBox="0 0 1440 120"
+            preserveAspectRatio="none" class="w-full h-20 md:h-28">
+            <path fill="currentColor"
+                d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z">
+            </path>
+        </svg></div>
 
     <!-- About Section -->
     <section id="about"

@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,18 +35,23 @@
                 extend: {
                     colors: {
                         brand: {
-                            yellow: '#F59E0B',
-                            green: '#10B981',
-                            coral: '#F97316',
-                            cream: '#FFFBEB',
-                            charcoal: '#1F2937',
-                            gray: '#6B7280',
+                            yellow: '#F5A623',
+                            green: '#059669',
+                            coral: '#F43F5E',
+                            cream: '#FAFAFA',
+                            charcoal: '#0F172A',
+                            gray: '#64748B',
+                        },
+                        gray: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
                         },
                         coral: { 50: '#FFF7ED', 100: '#FFEDD5' }
                     },
                     fontFamily: {
-                        heading: ['Nunito', 'sans-serif'],
-                        body: ['Source Sans 3', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
                     }
                 }
             }
@@ -364,65 +369,63 @@
                 <h2 class="section-title">Unsere Aktivitäten</h2>
                 <p class="section-subtitle mx-auto">Entdeckt die spannenden Lernerfahrungen, die wir schaffen</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-800" data-gs-delay="0.1">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="card tilt-card overflow-hidden gs-reveal md:col-span-2 md:row-span-2 flex flex-col dark:bg-gray-800" data-gs-delay="0.1">
                     <div
-                        class="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-700 dark:to-gray-800 aspect-video flex items-center justify-center">
-                        <svg class="w-16 h-16 text-brand-yellow/50 zoom-img" fill="none" stroke="currentColor"
+                        class="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-800/80 dark:to-gray-900 flex-1 min-h-[300px] flex items-center justify-center relative">
+                        <svg class="w-32 h-32 text-brand-yellow/60 zoom-img" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg></div>
-                    <div class="p-6">
-                        <h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">Interaktives
+                    <div class="p-8">
+                        <h3 class="font-heading font-bold text-2xl text-brand-charcoal dark:text-white mb-2">Interaktives
                             Geschichtenerzählen</h3>
-                        <p class="text-brand-gray dark:text-gray-300">Bilderbücher werden mit Requisiten, Stimmen und
-                            Publikumsteilnahme zum Leben erweckt.</p>
+                        <p class="text-brand-gray dark:text-gray-400 text-lg">Bilderbücher werden mit Requisiten, Stimmen und
+                            Publikumsteilnahme zum Leben erweckt. Eine magische Erfahrung für alle Kinder.</p>
                     </div>
                 </div>
-                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-800" data-gs-delay="0.2">
+                <div class="card tilt-card overflow-hidden gs-reveal md:col-span-2 flex flex-row dark:bg-gray-800" data-gs-delay="0.2">
                     <div
-                        class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-800 aspect-video flex items-center justify-center">
+                        class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-emerald-900/20 dark:to-gray-800 w-1/3 flex items-center justify-center">
                         <svg class="w-16 h-16 text-brand-green/50 zoom-img" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg></div>
-                    <div class="p-6">
+                    <div class="p-6 w-2/3 flex flex-col justify-center">
                         <h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">Kreative
                             Lesespiele</h3>
-                        <p class="text-brand-gray dark:text-gray-300">Worträtsel, Lese-Herausforderungen und
+                        <p class="text-brand-gray dark:text-gray-400">Worträtsel, Lese-Herausforderungen und
                             Fantasie-Übungen für spielerisches Lernen.</p>
                     </div>
                 </div>
-                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-800" data-gs-delay="0.3">
-                    <div
-                        class="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-700 dark:to-gray-800 aspect-video flex items-center justify-center">
-                        <svg class="w-16 h-16 text-brand-coral/50 zoom-img" fill="none" stroke="currentColor"
+                <div class="card tilt-card overflow-hidden gs-reveal md:col-span-1 dark:bg-gray-800" data-gs-delay="0.3">
+                    <div class="p-8 h-full flex flex-col justify-between items-start bg-gradient-to-br from-orange-50/50 to-transparent dark:from-slate-800/50 dark:to-transparent">
+                        <svg class="w-12 h-12 text-brand-coral/60 mb-6 zoom-img" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg></div>
-                    <div class="p-6">
-                        <h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">Lese-Kreise
-                        </h3>
-                        <p class="text-brand-gray dark:text-gray-300">Kleine Gruppen lesen gemeinsam und besprechen
-                            Geschichten — Gemeinschaft aufbauen.</p>
+                        </svg>
+                        <div>
+                            <h3 class="font-heading font-bold text-lg text-brand-charcoal dark:text-white mb-2">Lese-Kreise
+                            </h3>
+                            <p class="text-brand-gray dark:text-gray-400 text-sm">Zusammen lesen und Gemeinschaft aufbauen.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card tilt-card overflow-hidden gs-reveal dark:bg-gray-800" data-gs-delay="0.4">
-                    <div
-                        class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-800 aspect-video flex items-center justify-center">
-                        <svg class="w-16 h-16 text-purple-400 zoom-img" fill="none" stroke="currentColor"
+                <div class="card tilt-card overflow-hidden gs-reveal md:col-span-1 dark:bg-gray-800" data-gs-delay="0.4">
+                    <div class="p-8 h-full flex flex-col justify-between items-start bg-gradient-to-br from-purple-50/50 to-transparent dark:from-slate-800/50 dark:to-transparent">
+                        <svg class="w-12 h-12 text-purple-400/60 mb-6 zoom-img" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                        </svg></div>
-                    <div class="p-6">
-                        <h3 class="font-heading font-bold text-xl text-brand-charcoal dark:text-white mb-2">
-                            Illustrations-Workshop</h3>
-                        <p class="text-brand-gray dark:text-gray-300">Kinder zeichnen eigene Illustrationen — Kunst und
-                            Lesen praktisch verbinden.</p>
+                        </svg>
+                        <div>
+                            <h3 class="font-heading font-bold text-lg text-brand-charcoal dark:text-white mb-2">
+                                Illustration</h3>
+                            <p class="text-brand-gray dark:text-gray-400 text-sm">Kunst und Lesen praktisch verbinden.</p>
+                        </div>
                     </div>
                 </div>
             </div>

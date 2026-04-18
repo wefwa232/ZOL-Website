@@ -3,7 +3,7 @@
 /* ============ BASE ============ */
 @layer base {
     html {
-        font-family: 'Source Sans 3', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
 
     h1,
@@ -12,7 +12,7 @@
     h4,
     h5,
     h6 {
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Outfit', sans-serif;
     }
 
     section,
@@ -36,28 +36,46 @@
 /* ============ COMPONENTS ============ */
 @layer components {
     .btn-primary {
-        @apply bg-brand-yellow text-white font-heading font-semibold px-8 py-3 rounded-full hover:bg-brand-coral hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg;
+        @apply relative overflow-hidden bg-brand-yellow text-white font-heading font-semibold px-8 py-3 rounded-full hover:scale-[1.03] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-brand-yellow/20 z-10 border border-brand-yellow/80;
+    }
+
+    .btn-primary::before {
+        content: '';
+        @apply absolute inset-0 bg-brand-coral opacity-0 transition-opacity duration-300 z-[-1];
+    }
+    
+    .btn-primary:hover::before {
+        @apply opacity-100;
     }
 
     .btn-secondary {
-        @apply bg-brand-green text-white font-heading font-semibold px-8 py-3 rounded-full hover:bg-emerald-600 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg;
+        @apply relative overflow-hidden bg-brand-green text-white font-heading font-semibold px-8 py-3 rounded-full hover:scale-[1.03] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-brand-green/20 z-10 border border-brand-green/80;
+    }
+
+    .btn-secondary::before {
+        content: '';
+        @apply absolute inset-0 bg-emerald-700 opacity-0 transition-opacity duration-300 z-[-1];
+    }
+
+    .btn-secondary:hover::before {
+        @apply opacity-100;
     }
 
     .card {
-        @apply bg-white/95 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl border border-white/50 dark:border-white/5 shadow-md overflow-hidden relative;
-        transition: box-shadow 0.4s ease, background-color 0.5s ease, border-color 0.4s ease;
+        @apply bg-white/70 dark:bg-gray-900/60 backdrop-blur-2xl rounded-3xl border border-white/80 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden relative;
+        transition: box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.6s ease, border-color 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card:hover {
-        @apply shadow-xl border-brand-yellow/30 dark:border-brand-yellow/30;
+        @apply shadow-[0_20px_40px_rgb(0,0,0,0.08)] dark:shadow-[0_20px_40px_rgba(245,166,35,0.05)] border-brand-yellow/40 dark:border-brand-yellow/30;
     }
 
     .section-padding {
-        @apply py-20 px-6 md:px-12 lg:px-24;
+        @apply py-28 lg:py-36 px-6 md:px-12 lg:px-24;
     }
 
     .section-title {
-        @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-brand-charcoal mb-4;
+        @apply font-heading text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-brand-charcoal mb-6;
     }
 
     .section-subtitle {

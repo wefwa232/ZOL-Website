@@ -8,7 +8,7 @@ test('uses built Tailwind CSS instead of the browser CDN', async () => {
   const html = await read('index.html');
 
   assert(!html.includes('cdn.tailwindcss.com'));
-  assert.match(html, /<link rel="stylesheet" href="css\/styles\.css">/);
+  assert.match(html, /<link rel="stylesheet" href="css\/styles\.css(?:\?v=[^\"]+)?">/);
 });
 
 test('hero content has a no-JavaScript fallback and animates to visible', async () => {

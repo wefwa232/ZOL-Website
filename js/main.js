@@ -237,9 +237,11 @@
     function initSwiper() {
         if (typeof Swiper === 'undefined') return;
         new Swiper('.testimonial-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 22,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 24,
             loop: true,
+            loopAdditionalSlides: 2,
             speed: 700,
             autoplay: { delay: 5200, disableOnInteraction: false },
             pagination: { el: '.swiper-pagination', clickable: true }

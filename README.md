@@ -1,18 +1,18 @@
-﻿# ZOL — Zukunft Orientiertes Lernen
+﻿# ZOL - Zukunft Orientiertes Lernen
 
 Eine statische Showcase-Website für das ZOL-Leseprojekt an der Gaißau Volksschule.
 
 ## Über
 
-ZOL (Zukunft Orientiertes Lernen) ist eine von Schüler*innen initiierte Initiative, die sich der Leseförderung und dem interaktiven Lernen bei jungen Kindern an der Gaißau Volksschule widmet.
+ZOL (Zukunft Orientiertes Lernen) ist eine von Schüler*innen initiierte Initiative, die Leseförderung, interaktive Lesesessions und kreative Lernmomente an der Gaißau Volksschule unterstützt.
 
 ## Technologien
 
 - HTML5
 - Tailwind CSS (CLI build)
-- Google Fonts (Outfit + Inter)
+- Google Fonts (Bricolage Grotesque + Manrope)
 - GSAP + ScrollTrigger
-- Typed.js
+- Lucide Icons
 - Swiper
 - GLightbox
 - Vanilla JavaScript
@@ -36,24 +36,20 @@ npm run dev:css
 ## Inhalte Bearbeiten
 
 ### Text Bearbeiten
-Öffne `index.html` in einem beliebigen Texteditor und finde den Abschnitt, den du bearbeiten möchtest. Der gesamte Text steht direkt im HTML.
+Öffne `index.html` und bearbeite die Inhalte direkt in den jeweiligen Abschnitten.
 
 ### Bilder Aktualisieren
 Lege neue Bilder im Ordner `images/` oder `images/gallery/` ab und passe die `src`-/`href`-Attribute der Galerieeinträge in `index.html` an.
 
-### Teammitglieder Aktualisieren
-Finde die Teamkarten im `#team`-Abschnitt und bearbeite Namen, Rollen und Beschreibungen. Füge weitere Karten hinzu, indem du einen bestehenden Karten-Block kopierst.
-
 ### Termine Aktualisieren
-Finde die Ereigniskarten im `#schedule`-Abschnitt und bearbeite Daten, Titel und Beschreibungen.
+Finde den `#termine`-Abschnitt und bearbeite Daten, Titel, Uhrzeiten und Beschreibungen.
 
 ## Veröffentlichung (GitHub Pages)
 
 1. Führe `npm run build:css` aus
-2. Pushe dieses Repository auf GitHub
-3. Gehe zu Settings > Pages
-4. Wähle den `main`-Branch als Quelle
-5. Die Website ist unter `https://deinusername.github.io/repository-name` erreichbar
+2. Führe `npm test` aus
+3. Pushe das Repository auf GitHub
+4. GitHub Pages veröffentlicht die statische Website aus dem `main`-Branch
 
 ## Lizenz
 

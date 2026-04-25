@@ -1,95 +1,49 @@
-# ZOL Website Design Specification
+﻿# ZOL Website Design Specification
 
 > **Project:** ZOL (Zukunft Orientiertes Lernen) — Gaißau Volksschule Reading Project
 > **Date:** 2026-04-12
-> **Status:** Approved
-
----
+> **Status:** Updated after production hardening
 
 ## Overview
 
-A single-page showcase website for the ZOL project at Gaißau Volksschule. The site informs parents and teachers about the reading/interactive activities the project group conducts with children. Hosted on GitHub Pages, built with static HTML + Tailwind CSS (CDN) + minimal JavaScript.
+A single-page showcase website for the ZOL project at Gaißau Volksschule. The site informs parents, teachers, and interested students about reading and interactive learning activities. It is hosted as a static GitHub Pages site.
 
-## Design Direction: "Warm, Bright & Welcoming"
+## Current Stack
 
-Inspired by sunlit learning spaces — genuine, warm, and inviting. Not corporate, not childish.
+- HTML5 single-page structure in `index.html`
+- Tailwind CSS compiled with the CLI into `css/styles.css`
+- Custom Tailwind source and component styles in `css/custom.css`
+- Google Fonts: Outfit for headings, Inter for body copy
+- GSAP + ScrollTrigger for reveal and interaction motion
+- Typed.js for the animated hero headline
+- Swiper for testimonials
+- GLightbox for gallery viewing
+- Vanilla JavaScript in `js/main.js`
 
-### Aesthetic Pillars
-1. **Warmth** — Earthy, sunny tones evoking sunlight, growth, optimism
-2. **Rounded & Soft** — No sharp edges, everything approachable
-3. **Organic touches** — Subtle hand-drawn-feel SVG elements
-4. **Generous white space** — Clean, uncluttered, premium feel
+## Design Direction
 
-### Color Palette
-
-| Role | Color | Hex | Usage |
-|------|-------|-----|-------|
-| Primary | Sunflower Yellow | `#F59E0B` | Buttons, highlights, accents |
-| Secondary | Sage Green | `#10B981` | Secondary CTAs, success states |
-| Accent | Warm Coral | `#F97316` | Important callouts, hover states |
-| Background | Warm Cream | `#FFFBEB` | Main page background |
-| Surface | Pure White | `#FFFFFF` | Cards, containers |
-| Text Primary | Deep Charcoal | `#1F2937` | Body text |
-| Text Secondary | Warm Gray | `#6B7280` | Subtitles, metadata |
-
-### Typography
-
-| Role | Font | Source |
-|------|------|--------|
-| Headings | Nunito (rounded, friendly) | Google Fonts |
-| Body | Source Sans 3 (clean, readable) | Google Fonts |
+Warm, bright, and welcoming. The site should feel like a sunlit learning space: friendly enough for a school project, but polished enough for parents, teachers, and partners.
 
 ## Page Structure
 
-Single-page website with smooth scrolling between sections:
+1. Hero
+2. Stats
+3. About
+4. Team
+5. Activities
+6. Gallery
+7. Testimonials
+8. Schedule
+9. FAQ
+10. Join / Mitmachen
+11. Partners
+12. Contact
+13. Footer
 
-1. **Hero** — Full viewport, headline, subtitle, floating SVG shapes, scroll indicator
-2. **About** — Two-column: text + photo card
-3. **Team** — Grid of team member cards with hover effects
-4. **Activities** — Masonry-like grid of activity cards with images
-5. **Schedule** — Timeline-style event cards with date badges
-6. **Contact CTA** — Warm background block with contact link
-7. **Footer** — Minimal copyright
+## Production Notes
 
-## Navigation
-
-Sticky nav bar appears after scrolling past hero. Logo left, links right. Collapses to hamburger on mobile.
-
-## Animations
-
-- Fade-in on scroll (AOS library)
-- Floating SVG shapes in hero (CSS keyframes)
-- Card hover lifts (4px + shadow)
-- Nav slide-in on scroll
-- Button hover scale transitions
-- Bouncing scroll indicator
-
-## Unique Element
-
-"The Story Journey" — a subtle illustrated path connecting sections visually with small illustrated waypoints (book icons, stars), creating a narrative experience fitting for a reading-focused project.
-
-## Technical Stack
-
-- **HTML5** — Single `index.html` file
-- **Tailwind CSS (CDN)** — Utility-first styling via `<script src="https://cdn.tailwindcss.com">`
-- **Google Fonts** — Nunito + Source Sans 3
-- **AOS** — Animate on Scroll library (CDN)
-- **Vanilla JavaScript** — Scroll behavior, mobile menu, nav toggle
-- **GitHub Pages** — Free hosting, auto-deploy from `main` branch
-
-## File Structure
-
-```
-zol-website/
-├── index.html          # Single page — all sections
-├── css/
-│   └── custom.css      # Custom styles, animations, Tailwind config
-├── js/
-│   └── main.js         # Nav behavior, scroll effects, mobile menu
-├── images/
-│   ├── hero-bg.svg     # Hero background illustration
-│   ├── journey-path.svg # Story journey connecting line
-│   ├── team/           # Team member photos (placeholders)
-│   └── activities/     # Activity photos (placeholders)
-└── README.md           # How to update content, deploy instructions
-```
+- Do not use the Tailwind browser CDN in production.
+- Run `npm run build:css` after changing Tailwind classes or `css/custom.css`.
+- Keep gallery media local under `images/` to avoid external placeholder dependencies.
+- Keep FAQ, menu, and theme controls synchronized with ARIA state.
+- Keep the hero readable with JavaScript disabled; JavaScript may enhance it but must not be required for the core text to appear.

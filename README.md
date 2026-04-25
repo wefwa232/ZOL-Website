@@ -1,6 +1,6 @@
-# ZOL — Zukunft Orientiertes Lernen
+﻿# ZOL — Zukunft Orientiertes Lernen
 
-Eine Showcase-Website für das ZOL-Leseprojekt an der Gaißau Volksschule.
+Eine statische Showcase-Website für das ZOL-Leseprojekt an der Gaißau Volksschule.
 
 ## Über
 
@@ -9,35 +9,51 @@ ZOL (Zukunft Orientiertes Lernen) ist eine von Schüler*innen initiierte Initiat
 ## Technologien
 
 - HTML5
-- Tailwind CSS (CDN)
-- Google Fonts (Nunito + Source Sans 3)
-- AOS (Animate on Scroll)
+- Tailwind CSS (CLI build)
+- Google Fonts (Outfit + Inter)
+- GSAP + ScrollTrigger
+- Typed.js
+- Swiper
+- GLightbox
 - Vanilla JavaScript
+
+## Entwicklung
+
+Installiere die Abhängigkeiten und baue das CSS:
+
+```bash
+npm install
+npm run build:css
+npm test
+```
+
+Während der Bearbeitung kann das CSS im Watch-Modus gebaut werden:
+
+```bash
+npm run dev:css
+```
 
 ## Inhalte Bearbeiten
 
 ### Text Bearbeiten
-Öffne `index.html` in einem beliebigen Texteditor und finde den Abschnitt, den du bearbeiten möchtest. Der gesamte Text steht direkt im HTML — ändere einfach den Inhalt zwischen den Tags.
+Öffne `index.html` in einem beliebigen Texteditor und finde den Abschnitt, den du bearbeiten möchtest. Der gesamte Text steht direkt im HTML.
 
-### Bilder Hinzufügen
-1. Lege deine Bilder im Ordner `images/` ab
-2. Ersetze die Platzhalter-SVG-Blöcke durch `<img>`-Tags:
-   ```html
-   <img src="images/dein-foto.jpg" alt="Beschreibung" class="w-full h-full object-cover rounded-xl">
-   ```
+### Bilder Aktualisieren
+Lege neue Bilder im Ordner `images/` oder `images/gallery/` ab und passe die `src`-/`href`-Attribute der Galerieeinträge in `index.html` an.
 
 ### Teammitglieder Aktualisieren
-Finde die Teamkarten im `#team`-Abschnitt und bearbeite die Namen/Rollen. Füge weitere Karten hinzu, indem du einen bestehenden Karten-Block kopierst.
+Finde die Teamkarten im `#team`-Abschnitt und bearbeite Namen, Rollen und Beschreibungen. Füge weitere Karten hinzu, indem du einen bestehenden Karten-Block kopierst.
 
 ### Termine Aktualisieren
 Finde die Ereigniskarten im `#schedule`-Abschnitt und bearbeite Daten, Titel und Beschreibungen.
 
 ## Veröffentlichung (GitHub Pages)
 
-1. Pushe dieses Repository auf GitHub
-2. Gehe zu Settings > Pages
-3. Wähle `main`-Branch als Quelle
-4. Deine Website ist live unter `https://deinusername.github.io/repository-name`
+1. Führe `npm run build:css` aus
+2. Pushe dieses Repository auf GitHub
+3. Gehe zu Settings > Pages
+4. Wähle den `main`-Branch als Quelle
+5. Die Website ist unter `https://deinusername.github.io/repository-name` erreichbar
 
 ## Lizenz
 

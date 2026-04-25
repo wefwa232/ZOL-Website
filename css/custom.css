@@ -1,3 +1,7 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Custom styles for ZOL website */
 
 /* ============ BASE ============ */
@@ -138,6 +142,10 @@
         transition: stroke-dashoffset 0.1s linear;
     }
 
+    .faq-toggle {
+        @apply w-full flex items-center justify-between p-6 text-left;
+    }
+
     *:focus-visible {
         @apply outline outline-2 outline-brand-yellow outline-offset-2;
     }
@@ -197,10 +205,19 @@
 }
 
 /* ============ HERO ============ */
-.hero-subtitle,
-.hero-description,
-.hero-buttons,
-.hero-scroll {
+.js .hero-subtitle {
+    opacity: 0;
+}
+
+.js .hero-description {
+    opacity: 0;
+}
+
+.js .hero-buttons {
+    opacity: 0;
+}
+
+.js .hero-scroll {
     opacity: 0;
 }
 

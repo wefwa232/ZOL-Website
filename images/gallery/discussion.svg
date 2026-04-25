@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title desc">
+  <title id="title">Gruppendiskussion</title>
+  <desc id="desc">Illustration fuer Gruppendiskussion im ZOL-Leseprojekt</desc>
+  <rect width="600" height="400" fill="#fffaf0"/>
+  <circle cx="86" cy="82" r="54" fill="#EC4899" opacity="0.22"/>
+  <circle cx="520" cy="316" r="88" fill="#059669" opacity="0.14"/>
+  <path d="M96 294C182 228 250 230 314 258c78 34 126 18 194-42" fill="none" stroke="#EC4899" stroke-width="18" stroke-linecap="round" opacity="0.24"/>
+  <g transform="translate(186 96)">
+    <path d="M0 40c54-31 108-31 162 0v154c-54-31-108-31-162 0z" fill="#fff" stroke="#0F172A" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M162 40c54-31 108-31 162 0v154c-54-31-108-31-162 0z" fill="#fff" stroke="#0F172A" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M162 40v154" stroke="#0F172A" stroke-width="8" stroke-linecap="round"/>
+    <path d="M38 88h78M38 120h66M208 88h78M208 120h56" stroke="#059669" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  </g>
+  <g fill="#EC4899">
+    <path d="M130 328l9 20 22 2-17 15 5 22-19-11-19 11 5-22-17-15 22-2z" opacity="0.72"/>
+    <path d="M480 58l7 15 16 2-12 11 4 16-15-8-15 8 4-16-12-11 16-2z" opacity="0.62"/>
+  </g>
+  <text x="300" y="354" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="34" font-weight="800" fill="#0F172A">Gruppendiskussion</text>
+</svg>

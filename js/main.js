@@ -1,4 +1,4 @@
-// ZOL Website - Main JavaScript
+﻿// ZOL Website - Main JavaScript
 gsap.registerPlugin(ScrollTrigger);
 
 // ============ THEME TOGGLE ============
@@ -9,24 +9,25 @@ gsap.registerPlugin(ScrollTrigger);
     var indicator = document.getElementById('theme-indicator');
     var isAnimating = false;
 
-    function setTheme(dark, animate) {
-        if (dark) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('zol-theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('zol-theme', 'light');
+    function setTheme(dark) {
+        document.documentElement.classList.toggle('dark', dark);
+        if (toggle) toggle.setAttribute('aria-pressed', String(dark));
+        try {
+            localStorage.setItem('zol-theme', dark ? 'dark' : 'light');
+        } catch (e) {
+            // Theme still works when storage is unavailable.
         }
     }
 
     // Check saved preference or system preference
-    var saved = localStorage.getItem('zol-theme');
+    var saved = null;
+    try { saved = localStorage.getItem('zol-theme'); } catch (e) { saved = null; }
     var isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     // Set initial indicator position
     if (isDark) {
         if (indicator) indicator.style.transform = 'translateX(36px)';
-        setTheme(true, false);
+        setTheme(true);
     }
 
     function switchTheme() {
@@ -44,7 +45,7 @@ gsap.registerPlugin(ScrollTrigger);
                 ease: 'power2.inOut',
                 backgroundColor: goingDark ? '#818CF8' : '#F59E0B',
                 onComplete: function () {
-                    setTheme(goingDark, false);
+                    setTheme(goingDark);
                     setTimeout(function () { isAnimating = false; }, 200);
                 }
             });
@@ -94,9 +95,10 @@ gsap.registerPlugin(ScrollTrigger);
 // ============ PRELOADER ============
 window.addEventListener('load', function () {
     setTimeout(function () {
-        document.getElementById('preloader').classList.add('hidden');
+        var preloader = document.getElementById('preloader');
+        if (preloader) preloader.classList.add('hidden');
         initHeroAnimations();
-    }, 1600);
+    }, 250);
 });
 
 // ============ NAVIGATION ============
@@ -105,20 +107,17 @@ window.addEventListener('load', function () {
     var mobileMenuBtn = document.getElementById('mobile-menu-btn');
     var mobileMenu = document.getElementById('mobile-menu');
     var heroSection = document.getElementById('hero');
-    var heroBottom = 0;
     var navTicking = false;
 
-    function updateHeroBottom() {
-        if (heroSection) heroBottom = heroSection.getBoundingClientRect().bottom;
+    function isPastHero() {
+        return heroSection ? heroSection.getBoundingClientRect().bottom <= 0 : window.scrollY > 0;
     }
-    updateHeroBottom();
-    window.addEventListener('resize', updateHeroBottom);
 
     // Navbar: always visible, add shadow on scroll
     function handleNavScroll() {
         if (!navTicking && navbar) {
             window.requestAnimationFrame(function () {
-                if (heroBottom <= 0) {
+                if (isPastHero()) {
                     navbar.classList.add('shadow-md');
                 } else {
                     navbar.classList.remove('shadow-md');
@@ -135,17 +134,20 @@ window.addEventListener('load', function () {
             var isOpen = !mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden');
             mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+            mobileMenu.setAttribute('aria-hidden', String(isOpen));
         });
         mobileMenu.querySelectorAll('a').forEach(function (link) {
             link.addEventListener('click', function () {
                 mobileMenu.classList.add('hidden');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
             });
         });
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
                 mobileMenuBtn.focus();
             }
         });
@@ -160,10 +162,10 @@ function initHeroAnimations() {
             typeSpeed: 50, backSpeed: 30, backDelay: 2500, loop: true, showCursor: true, cursorChar: '|', contentType: 'html'
         });
     }
-    gsap.from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.8, delay: 0.3, ease: 'power2.out' });
-    gsap.from('.hero-description', { opacity: 0, y: 30, duration: 0.8, delay: 0.5, ease: 'power2.out' });
-    gsap.from('.hero-buttons', { opacity: 0, y: 30, duration: 0.8, delay: 0.7, ease: 'power2.out' });
-    gsap.from('.hero-scroll', { opacity: 0, duration: 0.6, delay: 1.2, ease: 'power2.out' });
+    gsap.fromTo('.hero-subtitle', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: 'power2.out' });
+    gsap.fromTo('.hero-description', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: 'power2.out' });
+    gsap.fromTo('.hero-buttons', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: 'power2.out' });
+    gsap.fromTo('.hero-scroll', { opacity: 0 }, { opacity: 1, duration: 0.6, delay: 1.2, ease: 'power2.out' });
 
     var heroParticles = document.getElementById('hero-particles');
     if (heroParticles) {
@@ -288,7 +290,7 @@ function initScrollProgress() {
     window.addEventListener('scroll', function () {
         var scroll = window.scrollY;
         var max = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = (scroll / max * 100) + '%';
+        bar.style.width = (max > 0 ? (scroll / max * 100) : 0) + '%';
     }, { passive: true });
 }
 
@@ -302,7 +304,7 @@ function initBackToTop() {
         var max = document.documentElement.scrollHeight - window.innerHeight;
         if (scroll > 500) btn.classList.add('visible');
         else btn.classList.remove('visible');
-        if (ring) ring.style.strokeDashoffset = 100 - (scroll / max * 100);
+        if (ring) ring.style.strokeDashoffset = 100 - (max > 0 ? (scroll / max * 100) : 0);
     }, { passive: true });
     btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 }
@@ -330,10 +332,17 @@ function initFAQ() {
         btn.addEventListener('click', function () {
             var item = btn.closest('.faq-item');
             var wasActive = item.classList.contains('active');
-            // Close all
-            document.querySelectorAll('.faq-item').forEach(function (faq) { faq.classList.remove('active'); });
-            // Toggle current
-            if (!wasActive) item.classList.add('active');
+
+            document.querySelectorAll('.faq-item').forEach(function (faq) {
+                faq.classList.remove('active');
+                var faqBtn = faq.querySelector('.faq-toggle');
+                if (faqBtn) faqBtn.setAttribute('aria-expanded', 'false');
+            });
+
+            if (!wasActive) {
+                item.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+            }
         });
     });
 }

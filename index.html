@@ -5,10 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data:; img-src 'self' data: https://placehold.co;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src https://fonts.gstatic.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>ZOL — Zukunft Orientiertes Lernen</title>
     <meta name="description" content="ZOL bringt Leseförderung und interaktive Lernprojekte an die Gaißau Volksschule.">
+    <meta property="og:title" content="ZOL — Zukunft Orientiertes Lernen">
+    <meta property="og:description" content="Interaktive Lese- und Lernprojekte an der Gaißau Volksschule.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/social-card.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ZOL — Zukunft Orientiertes Lernen">
+    <meta name="twitter:description" content="Interaktive Lese- und Lernprojekte an der Gaißau Volksschule.">
+    <meta name="twitter:image" content="images/social-card.svg">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <script>document.documentElement.classList.add('js');</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,47 +26,13 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/glightbox@3.3.0/dist/css/glightbox.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/glightbox@3.3.0/dist/css/glightbox.min.css">
-
-    <link rel="stylesheet" href="css/custom.css">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            yellow: '#F5A623',
-                            green: '#059669',
-                            coral: '#F43F5E',
-                            cream: '#FAFAFA',
-                            charcoal: '#0F172A',
-                            gray: '#64748B',
-                        },
-                        gray: {
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617',
-                        },
-                        coral: { 50: '#FFF7ED', 100: '#FFEDD5' }
-                    },
-                    fontFamily: {
-                        heading: ['Outfit', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 
 <body
@@ -108,7 +84,7 @@
                 <!-- Theme Toggle Pill -->
                 <button id="theme-toggle"
                     class="relative flex items-center gap-0.5 bg-brand-gray/10 dark:bg-gray-800 rounded-full p-1 cursor-pointer hover:bg-brand-gray/20 dark:hover:bg-gray-700 transition-colors"
-                    aria-label="Theme wechseln">
+                    aria-label="Theme wechseln" aria-pressed="false">
                     <div class="relative w-8 h-8 flex items-center justify-center">
                         <svg class="theme-icon-sun w-5 h-5 text-brand-yellow" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
@@ -129,13 +105,14 @@
                 </button>
             </div>
             <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-brand-yellow/10 transition-colors"
-                aria-label="Menü öffnen" aria-expanded="false">
+                aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
         <div id="mobile-menu"
+            aria-hidden="true"
             class="hidden lg:hidden bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-lg rounded-b-2xl mx-4 overflow-hidden border border-white/20 dark:border-gray-700">
             <div class="flex flex-col p-6 gap-4">
                 <a href="#about" class="font-body text-brand-charcoal dark:text-white font-medium text-lg">Über Uns</a>
@@ -449,10 +426,10 @@
                 <p class="section-subtitle mx-auto">Einblicke in unsere Aktivitäten an der Gaißau Volksschule</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <a href="https://placehold.co/600x400/F59E0B/FFFFFF?text=Lesesession"
+                <a href="images/gallery/reading-session.svg"
                     class="glightbox gallery-item overflow-hidden rounded-xl group gs-reveal relative block"
                     data-gs-delay="0.05">
-                    <img src="https://placehold.co/600x400/F59E0B/FFFFFF?text=Lesesession" alt="Lesesession"
+                    <img src="images/gallery/reading-session.svg" alt="Lesesession"
                         class="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy">
                     <div
@@ -464,10 +441,10 @@
                         </svg>
                     </div>
                 </a>
-                <a href="https://placehold.co/600x400/10B981/FFFFFF?text=Bilderbuch"
+                <a href="images/gallery/picture-book.svg"
                     class="glightbox gallery-item overflow-hidden rounded-xl group gs-reveal relative block"
                     data-gs-delay="0.1">
-                    <img src="https://placehold.co/600x400/10B981/FFFFFF?text=Bilderbuch" alt="Bilderbuch"
+                    <img src="images/gallery/picture-book.svg" alt="Bilderbuch"
                         class="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy">
                     <div
@@ -479,10 +456,10 @@
                         </svg>
                     </div>
                 </a>
-                <a href="https://placehold.co/600x400/F97316/FFFFFF?text=Workshop"
+                <a href="images/gallery/workshop.svg"
                     class="glightbox gallery-item overflow-hidden rounded-xl group gs-reveal relative block"
                     data-gs-delay="0.15">
-                    <img src="https://placehold.co/600x400/F97316/FFFFFF?text=Workshop" alt="Workshop"
+                    <img src="images/gallery/workshop.svg" alt="Workshop"
                         class="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy">
                     <div
@@ -494,10 +471,10 @@
                         </svg>
                     </div>
                 </a>
-                <a href="https://placehold.co/600x400/8B5CF6/FFFFFF?text=Malaktion"
+                <a href="images/gallery/painting.svg"
                     class="glightbox gallery-item overflow-hidden rounded-xl group gs-reveal relative block"
                     data-gs-delay="0.2">
-                    <img src="https://placehold.co/600x400/8B5CF6/FFFFFF?text=Malaktion" alt="Malaktion"
+                    <img src="images/gallery/painting.svg" alt="Malaktion"
                         class="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy">
                     <div
@@ -509,10 +486,10 @@
                         </svg>
                     </div>
                 </a>
-                <a href="https://placehold.co/600x400/EC4899/FFFFFF?text=Gruppendiskussion"
+                <a href="images/gallery/discussion.svg"
                     class="glightbox gallery-item overflow-hidden rounded-xl group gs-reveal relative block"
                     data-gs-delay="0.25">
-                    <img src="https://placehold.co/600x400/EC4899/FFFFFF?text=Gruppendiskussion" alt="Gruppendiskussion"
+                    <img src="images/gallery/discussion.svg" alt="Gruppendiskussion"
                         class="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy">
                     <div
@@ -524,10 +501,10 @@
                         </svg>
                     </div>
                 </a>
-                <a href="https://placehold.co/600x400/06B6D4/FFFFFF?text=Lesefest"
+                <a href="images/gallery/reading-festival.svg"
                     class="glightbox gallery-item overflow-hidden rounded-xl group gs-reveal relative block"
                     data-gs-delay="0.3">
-                    <img src="https://placehold.co/600x400/06B6D4/FFFFFF?text=Lesefest" alt="Lesefest"
+                    <img src="images/gallery/reading-festival.svg" alt="Lesefest"
                         class="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy">
                     <div
@@ -701,65 +678,65 @@
             </div>
             <div class="space-y-4 gs-reveal">
                 <div class="faq-item card overflow-hidden dark:bg-gray-800"><button
-                        class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span
+                        id="faq-button-1" class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-1"><span
                             class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Was ist ZOL
                             genau?</span><svg
                             class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg></button>
-                    <div class="faq-content text-brand-gray dark:text-gray-300 text-lg">
+                    <div id="faq-panel-1" class="faq-content text-brand-gray dark:text-gray-300 text-lg">
                         <p class="px-6 pb-6">ZOL (Zukunft Orientiertes Lernen) ist ein von Schüler*innen geleitetes Projekt, das
                             Leseförderung durch interaktive Aktivitäten an der Gaißau Volksschule betreibt.</p>
                     </div>
                 </div>
                 <div class="faq-item card overflow-hidden dark:bg-gray-800"><button
-                        class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span
+                        id="faq-button-2" class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-2"><span
                             class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wer kann bei
                             ZOL mitmachen?</span><svg
                             class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg></button>
-                    <div class="faq-content text-brand-gray dark:text-gray-300 text-lg">
+                    <div id="faq-panel-2" class="faq-content text-brand-gray dark:text-gray-300 text-lg">
                         <p class="px-6 pb-6">Jede*r Schüler*in, die/der Freude am Lesen und am Arbeiten mit Kindern hat, ist herzlich
                             willkommen!</p>
                     </div>
                 </div>
                 <div class="faq-item card overflow-hidden dark:bg-gray-800"><button
-                        class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span
+                        id="faq-button-3" class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-3"><span
                             class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wo finden
                             die Aktivitäten statt?</span><svg
                             class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg></button>
-                    <div class="faq-content text-brand-gray dark:text-gray-300 text-lg">
+                    <div id="faq-panel-3" class="faq-content text-brand-gray dark:text-gray-300 text-lg">
                         <p class="px-6 pb-6">Alle Aktivitäten finden direkt an der Gaißau Volksschule statt. Wir arbeiten eng mit den
                             Lehrer*innen zusammen.</p>
                     </div>
                 </div>
                 <div class="faq-item card overflow-hidden dark:bg-gray-800"><button
-                        class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span
+                        id="faq-button-4" class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-4"><span
                             class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wie oft
                             besucht ihr die Schule?</span><svg
                             class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg></button>
-                    <div class="faq-content text-brand-gray dark:text-gray-300 text-lg">
+                    <div id="faq-panel-4" class="faq-content text-brand-gray dark:text-gray-300 text-lg">
                         <p class="px-6 pb-6">Wir besuchen die Gaißau Volksschule in der Regel alle zwei Wochen.</p>
                     </div>
                 </div>
                 <div class="faq-item card overflow-hidden dark:bg-gray-800"><button
-                        class="faq-toggle w-full flex items-center justify-between p-6 text-left"><span
+                        id="faq-button-5" class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-5"><span
                             class="font-heading font-bold text-lg text-brand-charcoal dark:text-white pr-4">Wie kann ich
                             ZOL unterstützen?</span><svg
                             class="faq-icon w-6 h-6 text-brand-yellow flex-shrink-0 transition-transform duration-300"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg></button>
-                    <div class="faq-content text-brand-gray dark:text-gray-300 text-lg">
+                    <div id="faq-panel-5" class="faq-content text-brand-gray dark:text-gray-300 text-lg">
                         <p class="px-6 pb-6">Ihr könnt als Teammitglied mitmachen, Bücher oder Materialien spenden, oder einfach das
                             Projekt weiterempfehlen.</p>
                     </div>

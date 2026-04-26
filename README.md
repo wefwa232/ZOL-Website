@@ -1,10 +1,10 @@
-﻿# ZOL - Zukunft Orientiertes Lernen
+﻿# BG Lustenau - ZOL Zukunftsorientiertes Lernen
 
-Eine statische Showcase-Website für das ZOL-Leseprojekt an der Gaißau Volksschule.
+Eine statische Website für verifizierte Informationen zum Bundesgymnasium Lustenau und zum Lernformat ZOL - Zukunftsorientiertes Lernen.
 
 ## Über
 
-ZOL (Zukunft Orientiertes Lernen) ist eine von Schüler*innen initiierte Initiative, die Leseförderung, interaktive Lesesessions und kreative Lernmomente an der Gaißau Volksschule unterstützt.
+Das Bundesgymnasium Lustenau ist ein neusprachliches Gymnasium mit acht Jahrgangsstufen. Die Website fasst Schulprofil, Sprachen, Förderung, Anmeldung, Service und ZOL auf Deutsch zusammen.
 
 ## Technologien
 
@@ -41,8 +41,8 @@ npm run dev:css
 ### Bilder Aktualisieren
 Lege neue Bilder im Ordner `images/` oder `images/gallery/` ab und passe die `src`-/`href`-Attribute der Galerieeinträge in `index.html` an.
 
-### Termine Aktualisieren
-Finde den `#termine`-Abschnitt und bearbeite Daten, Titel, Uhrzeiten und Beschreibungen.
+### Service Aktualisieren
+Finde den `#termine`-Abschnitt und bearbeite Anmeldezeitraum, Zeugnisabgabe und Sekretariatsinformationen.
 
 ## Veröffentlichung (GitHub Pages)
 

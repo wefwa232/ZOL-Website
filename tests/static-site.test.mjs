@@ -47,6 +47,19 @@ test('uses local imagery and defines site icons/social metadata', async () => {
   assert.match(html, /name="twitter:card"/);
 });
 
+test('content reflects verified BG Lustenau information', async () => {
+  const html = await read('index.html');
+
+  assert.match(html, /Bundesgymnasium Lustenau/);
+  assert.match(html, /Mühlefeldstraße 20, 6890 Lustenau/);
+  assert.match(html, /bg\.lustenau@cnv\.at/);
+  assert.match(html, /ZOL - Zukunftsorientiertes Lernen/);
+  assert.match(html, /Schulkennzahl 803036/);
+  assert(!html.includes('Gaißau Volksschule'));
+  assert(!html.includes('fateh.suren@gmail.com'));
+  assert(!html.includes('Zukunft Orientiertes Lernen'));
+});
+
 test('README reflects the current production stack', async () => {
   const readme = await read('README.md');
 

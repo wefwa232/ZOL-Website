@@ -40,7 +40,8 @@ test('uses local imagery and defines site icons/social metadata', async () => {
   const html = await read('index.html');
 
   assert(!html.includes('placehold.co'));
-  assert.match(html, /images\/gallery\/reading-session\.svg/);
+  assert.match(html, /videos\/zol-presentation\.mp4/);
+  assert.match(html, /autoplay muted loop playsinline/);
   assert.match(html, /rel="icon"/);
   assert.match(html, /property="og:title"/);
   assert.match(html, /name="twitter:card"/);

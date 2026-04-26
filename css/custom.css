@@ -293,36 +293,13 @@
 
 .js .hero-copy,
 .js .hero-visual,
-.js .learning-board,
-.js .floating-note,
-.js .floating-strip,
+.js .hero-video-card,
 .js .gs-reveal {
     opacity: 0;
 }
 
-.learning-board,
-.floating-note,
-.floating-strip {
+.hero-video-card {
     will-change: transform;
-}
-
-.floating-note {
-    animation: floatSoft 5s ease-in-out infinite;
-}
-
-.floating-strip {
-    animation: floatSoft 6s ease-in-out infinite reverse;
-}
-
-@keyframes floatSoft {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-0.8rem);
-    }
 }
 
 .testimonial-swiper {
@@ -362,10 +339,6 @@
     .hero-visual {
         min-height: 36rem;
     }
-
-    .floating-note {
-        left: 0.5rem;
-    }
 }
 
 @media (max-width: 640px) {
@@ -373,26 +346,8 @@
         min-height: 34rem;
     }
 
-    .learning-board {
+    .hero-video-card {
         width: 100%;
-    }
-
-    .floating-note {
-        top: 18rem;
-        width: 11rem;
-    }
-
-    .floating-strip {
-        left: 0;
-        right: 0;
-        bottom: -0.75rem;
-        border-radius: 1.25rem;
-    }
-
-    .floating-strip div {
-        display: grid;
-        gap: 0.35rem;
-        text-align: center;
     }
 
     .gallery-grid {
@@ -411,7 +366,6 @@
         font-size: 2rem;
     }
 }
-
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

@@ -67,7 +67,7 @@
 
     function initHeroAnimations() {
         if (!hasGsap) {
-            document.querySelectorAll('.hero-copy, .hero-visual, .learning-board, .floating-note, .floating-strip').forEach(function (el) {
+            document.querySelectorAll('.hero-copy, .hero-visual, .hero-video-card').forEach(function (el) {
                 el.style.opacity = '1';
             });
             return;
@@ -76,13 +76,11 @@
         var timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
         timeline
             .fromTo('.hero-copy', { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.9 })
-            .fromTo('.learning-board', { opacity: 0, y: 44, rotate: -2, scale: 0.96 }, { opacity: 1, y: 0, rotate: 0, scale: 1, duration: 1.1 }, '-=0.45')
-            .fromTo('.floating-note', { opacity: 0, x: -28, y: 18 }, { opacity: 1, x: 0, y: 0, duration: 0.8 }, '-=0.65')
-            .fromTo('.floating-strip', { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.55')
+            .fromTo('.hero-video-card', { opacity: 0, y: 44, rotate: -2, scale: 0.96 }, { opacity: 1, y: 0, rotate: 0, scale: 1, duration: 1.1 }, '-=0.45')
             .fromTo('.hero-visual', { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0);
 
         if (typeof ScrollTrigger !== 'undefined') {
-            gsap.to('.learning-board', {
+            gsap.to('.hero-video-card', {
                 y: -42,
                 rotate: 1.5,
                 ease: 'none',
